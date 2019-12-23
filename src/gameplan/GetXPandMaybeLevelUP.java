@@ -27,18 +27,26 @@ public final class GetXPandMaybeLevelUP {
             if (winner.getType() == 'K') {
                 winner.setHp(winner.getMaxHP() + helper.getLevelUpHPKnight());
                 winner.setMaxHP(winner.getHp());
+                System.out.println(winner.getFullType() + " " + winner.getId() + " reached level "
+                        + winner.getLevel());
             }
             if (winner.getType() == 'P') {
                 winner.setHp(winner.getMaxHP() + helper.getLevelUpHpPyromancer());
                 winner.setMaxHP(winner.getHp());
+                System.out.println(winner.getFullType() + " " + winner.getId() + " reached level "
+                        + winner.getLevel());
             }
             if (winner.getType() == 'R') {
                 winner.setHp(winner.getMaxHP() + helper.getLevelUpHPRoque());
                 winner.setMaxHP(winner.getHp());
+                System.out.println(winner.getFullType() + " " + winner.getId() + " reached level "
+                        + winner.getLevel());
             }
             if (winner.getType() == 'W') {
                 winner.setHp(winner.getMaxHP() + helper.getLevelUpHpWizard());
                 winner.setMaxHP(winner.getHp());
+                System.out.println(winner.getFullType() + " " + winner.getId() + " reached level "
+                        + winner.getLevel());
             }
         }
     }

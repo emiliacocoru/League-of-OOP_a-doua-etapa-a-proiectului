@@ -1,5 +1,6 @@
 package players.type;
 
+import angels.AngelVisitor;
 import gameplan.Map;
 import constant.Constants;
 import players.Player;
@@ -10,16 +11,22 @@ public final  class Knight extends Player {
     private double landAmplifier = 1.0;
     public Knight() {
         super();
+        setFullType("Knight");
     }
     public Knight(final char type) {
         super(type);
         setMaxHP(helper.getHpInitialKnight());
         setHp(helper.getHpInitialKnight());
+        setFullType("Knight");
     }
 
     @Override
     public void accept(final PlayerVisitor player) {
         player.visit(this);
+    }
+    @Override
+    public void accept(final AngelVisitor angel){
+        angel.visit(this);
     }
 
     private Map land = new Map();
@@ -57,7 +64,7 @@ public final  class Knight extends Player {
                 player.setReceivedDamageWRA(execute);
             } else {
                 execute = (int) Math.round(damageExecuteInitial * landAmplifier
-                         * helper.getExecuteAmplifierKK());
+                         * getExecuteAmplifierKK());
                 player.setReceivedDamageWRA((int) Math.round(damageExecuteInitial * landAmplifier));
             }
             player.setDamageThisRound(execute);
@@ -72,7 +79,7 @@ public final  class Knight extends Player {
                 player.setReceivedDamageWRA(execute);
             } else {
                 execute = (int) Math.round(damageExecuteInitial
-                        * landAmplifier * helper.getExecuteAmplifierKP());
+                        * landAmplifier * getExecuteAmplifierKP());
                 player.setReceivedDamageWRA((int) Math.round(damageExecuteInitial * landAmplifier));
             }
             player.setDamageThisRound(execute);
@@ -87,10 +94,12 @@ public final  class Knight extends Player {
                 player.setReceivedDamageWRA(execute);
             } else {
                 execute = (int) Math.round(damageExecuteInitial * landAmplifier
-                        * helper.getExecuteAmplifierKR());
+                        * getExecuteAmplifierKR());
+
                 player.setReceivedDamageWRA((int) Math.round(damageExecuteInitial * landAmplifier));
             }
             player.setDamageThisRound(execute);
+
         }
 
         @Override
@@ -102,7 +111,7 @@ public final  class Knight extends Player {
                 player.setReceivedDamageWRA(execute);
             } else {
                 execute = (int) Math.round(damageExecuteInitial * landAmplifier
-                        * helper.getExecuteAmplifierKW());
+                        * getExecuteAmplifierKW());
                 player.setReceivedDamageWRA(damageExecuteInitial * landAmplifier);
             }
             player.setDamageThisRound(execute);
@@ -117,7 +126,7 @@ public final  class Knight extends Player {
         @Override
         public void visit(final Knight player) {
             landAmplifier();
-            slam = (int) Math.round(baseDamage * helper.getSlamAmplifierKK() * landAmplifier);
+            slam = (int) Math.round(baseDamage * getSlamAmplifierKK() * landAmplifier);
             player.setReceivedDamageWRA((player.getReceivedDamageWRA())
                     + (int) Math.round(baseDamage * landAmplifier));
             player.setDamageThisRound(player.getDamageThisRound() + slam);
@@ -129,7 +138,7 @@ public final  class Knight extends Player {
         @Override
         public void visit(final Pyromancer player) {
             landAmplifier();
-            slam = (int) Math.round(baseDamage * helper.getSlamAmplifierKP() * landAmplifier);
+            slam = (int) Math.round(baseDamage * getSlamAmplifierKP() * landAmplifier);
             player.setReceivedDamageWRA((player.getReceivedDamageWRA())
                     + (int) Math.round(baseDamage * landAmplifier));
             player.setDamageThisRound(player.getDamageThisRound() + slam);
@@ -141,7 +150,7 @@ public final  class Knight extends Player {
         @Override
         public void visit(final Rogue player) {
             landAmplifier();
-            slam = (int) Math.round(baseDamage * helper.getSlamAmplifierKR() * landAmplifier);
+            slam = (int) Math.round(baseDamage * getSlamAmplifierKR() * landAmplifier);
             player.setReceivedDamageWRA(player.getReceivedDamageWRA()
                     + (int) Math.round(baseDamage * landAmplifier));
             player.setDamageThisRound(player.getDamageThisRound() + slam);
@@ -153,7 +162,7 @@ public final  class Knight extends Player {
         @Override
         public void visit(final Wizard player) {
             landAmplifier();
-            slam = (int) Math.round(baseDamage * helper.getSlamAmplifierKW() * landAmplifier);
+            slam = (int) Math.round(baseDamage * getSlamAmplifierKW() * landAmplifier);
             player.setReceivedDamageWRA((player.getReceivedDamageWRA())
                     + (int) Math.round(baseDamage * landAmplifier));
             player.setDamageThisRound(player.getDamageThisRound() + slam);

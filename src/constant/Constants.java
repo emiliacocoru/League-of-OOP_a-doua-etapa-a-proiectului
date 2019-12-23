@@ -4,50 +4,49 @@ public final class Constants {
     public Constants() {
     }
     // here are all the constants taken from the requirement
+    private final  double fireBlastAmplifierPR = 0.8;
+    private final  double fireBlastAmplifierPK = 1.2;
+    private final  double fireBlastAmplifierPP = 0.9;
+    private final  double fireBlastAmplifierPW = 1.05;
+
+    private final  double igniteAmplifierPR = 0.8;
+    private final  double igniteAmplifierPK = 1.2;
+    private final  double igniteAmplifierPP = 0.9;
+    private final  double igniteAmplifierPW = 1.05;
+
+    private final  double executeAmplifierKR = 1.15;
+    private final  double executeAmplifierKK = 1;
+    private final  double executeAmplifierKP = 1.1;
+    private final  double executeAmplifierKW = 0.8;
+
+    private final  double slamAmplifierKR = 0.8;
+    private final  double slamAmplifierKK = 1.2;
+    private final  double slamAmplifierKP = 0.9;
+    private final  double slamAmplifierKW = 1.05;
+
+    private final  double drainAmplifierWR = 0.8;
+    private final  double drainAmplifierWK = 1.2;
+    private final  double drainAmplifierWP = 0.9;
+    private final  double drainAmplifierWW = 1.05;
+
+    private final  double deflectAmplifierWR = 1.2;
+    private final  double deflectAmplifierWK = 1.4;
+    private final  double deflectAmplifierWP = 1.3;
+
+    private final  double backStabAmplifierRR = 1.2;
+    private final  double backStabAmplifierRK = 0.9;
+    private final  double backStabAmplifierRP = 1.25;
+    private final  double backStabAmplifierRW = 1.25;
+
+    private final  double paralysisAmplifierRR = 0.9;
+    private final  double paralysisAmplifierRK = 0.8;
+    private final  double paralysisAmplifierRP = 1.2;
+    private final  double paralysisAmplifierRW = 1.25;
+
     private final int hpInitialKnight = 900;
     private final int hpInitialRogue = 600;
     private final int hpInitialPyromancer = 500;
     private final int hpInitialWizard = 400;
-
-    private final double fireBlastAmplifierPR = 0.8;
-    private final double fireBlastAmplifierPK = 1.2;
-    private final double fireBlastAmplifierPP = 0.9;
-    private final double fireBlastAmplifierPW = 1.05;
-
-    private final double igniteAmplifierPR = 0.8;
-    private final double igniteAmplifierPK = 1.2;
-    private final double igniteAmplifierPP = 0.9;
-    private final double igniteAmplifierPW = 1.05;
-
-    private final double executeAmplifierKR = 1.15;
-    private final double executeAmplifierKK = 1;
-    private final double executeAmplifierKP = 1.1;
-    private final double executeAmplifierKW = 0.8;
-
-    private final double slamAmplifierKR = 0.8;
-    private final double slamAmplifierKK = 1.2;
-    private final double slamAmplifierKP = 0.9;
-    private final double slamAmplifierKW = 1.05;
-
-    private final double drainAmplifierWR = 0.8;
-    private final double drainAmplifierWK = 1.2;
-    private final double drainAmplifierWP = 0.9;
-    private final double drainAmplifierWW = 1.05;
-
-    private final double deflectAmplifierWR = 1.2;
-    private final double deflectAmplifierWK = 1.4;
-    private final double deflectAmplifierWP = 1.3;
-
-    private final double backStabAmplifierRR = 1.2;
-    private final double backStabAmplifierRK = 0.9;
-    private final double backStabAmplifierRP = 1.25;
-    private final double backStabAmplifierRW = 1.25;
-
-    private final double paralysisAmplifierRR = 0.9;
-    private final double paralysisAmplifierRK = 0.8;
-    private final double paralysisAmplifierRP = 1.2;
-    private final double paralysisAmplifierRW = 1.25;
-
 
     private final int levelUpHPKnight = 80;
     private final int levelUpHPRoque =  40;
@@ -95,13 +94,8 @@ public final class Constants {
     private final int slamDamagePerLevel = 40;
     private final int igniteDamage = 150;
     private final int igniteDamagePerLevel = 20;
-    private final int roundsExtraDamagePyromancer = 2;
     private final int damageExtraPyromancer = 50;
     private final int damageExtraPyromancerPerLevel = 30;
-
-    public int getRoundsExtraDamagePyromancer() {
-        return roundsExtraDamagePyromancer;
-    }
 
     public int getDamageExtraPyromancer() {
         return damageExtraPyromancer;
@@ -275,127 +269,4 @@ public final class Constants {
         return levelUpHpWizard;
     }
 
-    public double getFireBlastAmplifierPR() {
-        return fireBlastAmplifierPR;
-    }
-
-    public double getFireBlastAmplifierPK() {
-        return fireBlastAmplifierPK;
-    }
-
-    public double getFireBlastAmplifierPP() {
-        return fireBlastAmplifierPP;
-    }
-
-    public double getFireBlastAmplifierPW() {
-        return fireBlastAmplifierPW;
-    }
-
-    public double getIgniteAmplifierPR() {
-        return igniteAmplifierPR;
-    }
-
-    public double getIgniteAmplifierPK() {
-        return igniteAmplifierPK;
-    }
-
-    public double getIgniteAmplifierPP() {
-        return igniteAmplifierPP;
-    }
-
-    public double getIgniteAmplifierPW() {
-        return igniteAmplifierPW;
-    }
-
-    public double getExecuteAmplifierKR() {
-        return executeAmplifierKR;
-    }
-
-    public double getExecuteAmplifierKK() {
-        return executeAmplifierKK;
-    }
-
-    public double getExecuteAmplifierKP() {
-        return executeAmplifierKP;
-    }
-
-    public double getExecuteAmplifierKW() {
-        return executeAmplifierKW;
-    }
-
-    public double getSlamAmplifierKR() {
-        return slamAmplifierKR;
-    }
-
-    public double getSlamAmplifierKK() {
-        return slamAmplifierKK;
-    }
-
-    public double getSlamAmplifierKP() {
-        return slamAmplifierKP;
-    }
-
-    public double getSlamAmplifierKW() {
-        return slamAmplifierKW;
-    }
-
-    public double getDrainAmplifierWR() {
-        return drainAmplifierWR;
-    }
-
-    public double getDrainAmplifierWK() {
-        return drainAmplifierWK;
-    }
-
-    public double getDrainAmplifierWP() {
-        return drainAmplifierWP;
-    }
-
-    public double getDrainAmplifierWW() {
-        return drainAmplifierWW;
-    }
-
-    public double getDeflectAmplifierWR() {
-        return deflectAmplifierWR;
-    }
-
-    public double getDeflectAmplifierWK() {
-        return deflectAmplifierWK;
-    }
-
-    public double getDeflectAmplifierWP() {
-        return deflectAmplifierWP;
-    }
-
-    public double getBackStabAmplifierRR() {
-        return backStabAmplifierRR;
-    }
-
-    public double getBackStabAmplifierRK() {
-        return backStabAmplifierRK;
-    }
-
-    public double getBackStabAmplifierRP() {
-        return backStabAmplifierRP;
-    }
-
-    public double getBackStabAmplifierRW() {
-        return backStabAmplifierRW;
-    }
-
-    public double getParalysisAmplifierRR() {
-        return paralysisAmplifierRR;
-    }
-
-    public double getParalysisAmplifierRK() {
-        return paralysisAmplifierRK;
-    }
-
-    public double getParalysisAmplifierRP() {
-        return paralysisAmplifierRP;
-    }
-
-    public double getParalysisAmplifierRW() {
-        return paralysisAmplifierRW;
-    }
 }

@@ -1,5 +1,6 @@
 package players.type;
 
+import angels.AngelVisitor;
 import constant.Constants;
 import gameplan.Map;
 import players.Player;
@@ -7,6 +8,7 @@ import players.visitor.PlayerVisitor;
 
 public final class Wizard extends Player {
     private Constants helper = new Constants();
+
     private Map land = new Map();
     private char[][] gameMap = land.getMap();
     private double landAmplifier = 1.0;
@@ -14,11 +16,16 @@ public final class Wizard extends Player {
         super(type);
         setMaxHP(helper.getHpInitialWizard());
         setHp(helper.getHpInitialWizard());
+        setFullType("Wizard");
     }
 
     @Override
     public void accept(final PlayerVisitor player) {
         player.visit(this);
+    }
+    @Override
+    public void accept(final AngelVisitor angel) {
+        angel.visit(this);
     }
     // check if it is a land amplifier or not
     public void landAmplifier() {
@@ -41,7 +48,7 @@ public final class Wizard extends Player {
             baseHP(player);
             landAmplifier();
             damageDrain = (int) Math.round(landAmplifier * baseHP
-                    * damageInitial * helper.getDrainAmplifierWK());
+                    * damageInitial * getDrainAmplifierWK());
             player.setReceivedDamageWRA((int) Math.round(landAmplifier * baseHP));
             player.setDamageThisRound(damageDrain);
         }
@@ -51,7 +58,7 @@ public final class Wizard extends Player {
             landAmplifier();
             baseHP(player);
             damageDrain = (int) Math.round(landAmplifier * baseHP
-                    * damageInitial * helper.getDrainAmplifierWP());
+                    * damageInitial * getDrainAmplifierWP());
             player.setReceivedDamageWRA((int) Math.round(landAmplifier * baseHP));
             player.setDamageThisRound(damageDrain);
         }
@@ -59,10 +66,9 @@ public final class Wizard extends Player {
         @Override
         public void visit(final Rogue player) {
             baseHP(player);
-            System.out.println(baseHP);
             landAmplifier();
             damageDrain = (int) Math.round(landAmplifier
-                    * baseHP * damageInitial * helper.getDrainAmplifierWR());
+                    * baseHP * damageInitial * getDrainAmplifierWR());
             player.setReceivedDamageWRA((int) Math.round(landAmplifier * baseHP));
             player.setDamageThisRound(damageDrain);
         }
@@ -72,7 +78,7 @@ public final class Wizard extends Player {
             baseHP(player);
             landAmplifier();
             damageDrain = (int) Math.round(landAmplifier
-                    * baseHP * damageInitial * helper.getDrainAmplifierWW());
+                    * baseHP * damageInitial * getDrainAmplifierWW());
             player.setReceivedDamageWRA((int) Math.round(landAmplifier * baseHP));
             player.setDamageThisRound(damageDrain);
 
@@ -96,7 +102,7 @@ public final class Wizard extends Player {
             landAmplifier();
             player.setExtraRounds(0);
             deflect = (int) Math.round(percentDamage
-                    * helper.getDeflectAmplifierWK() * getReceivedDamageWRA() * landAmplifier);
+                    * getDeflectAmplifierWK() * getReceivedDamageWRA() * landAmplifier);
             player.setDamageThisRound(player.getDamageThisRound() + deflect);
 
         }
@@ -106,7 +112,7 @@ public final class Wizard extends Player {
             landAmplifier();
             player.setExtraRounds(0);
             deflect = (int) Math.round(percentDamage
-                    * helper.getDeflectAmplifierWP() * getReceivedDamageWRA() * landAmplifier);
+                    * getDeflectAmplifierWP() * getReceivedDamageWRA() * landAmplifier);
             player.setDamageThisRound(player.getDamageThisRound() + deflect);
         }
 
@@ -116,7 +122,7 @@ public final class Wizard extends Player {
             landAmplifier();
             player.setExtraRounds(0);
             deflect = (int) Math.round(percentDamage
-                    * helper.getDeflectAmplifierWR() * getReceivedDamageWRA() * landAmplifier);
+                    * getDeflectAmplifierWR() * getReceivedDamageWRA() * landAmplifier);
             player.setDamageThisRound(player.getDamageThisRound() + deflect);
         }
 

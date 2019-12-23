@@ -1,5 +1,6 @@
 package players.type;
 
+import angels.AngelVisitor;
 import constant.Constants;
 import gameplan.Map;
 import players.Player;
@@ -12,6 +13,7 @@ public final class Pyromancer extends Player {
         super(type);
         setMaxHP(helper.getHpInitialPyromancer());
         setHp(helper.getHpInitialPyromancer());
+        setFullType("Pyromancer");
     }
 
     private Map land = new Map();
@@ -28,6 +30,10 @@ public final class Pyromancer extends Player {
     public void accept(final PlayerVisitor player) {
         player.visit(this);
     }
+    @Override
+    public void accept(final AngelVisitor angel){
+        angel.visit(this);
+    }
     // first power
     public final class FireBlast implements PlayerVisitor {
         private int damageInitial = helper.getFireBlastBaseDamage()
@@ -38,7 +44,7 @@ public final class Pyromancer extends Player {
         public void visit(final Knight player) {
             landAmplifier();
             fireBlast = (int) Math.round(damageInitial
-                    * helper.getFireBlastAmplifierPK() * landAmplifier);
+                    * getFireBlastAmplifierPK() * landAmplifier);
             player.setReceivedDamageWRA(damageInitial * landAmplifier);
             player.setDamageThisRound(fireBlast);
         }
@@ -47,7 +53,7 @@ public final class Pyromancer extends Player {
         public void visit(final Pyromancer player) {
             landAmplifier();
             fireBlast = (int) Math.round(damageInitial
-                    * helper.getFireBlastAmplifierPP() * landAmplifier);
+                    * getFireBlastAmplifierPP() * landAmplifier);
             player.setReceivedDamageWRA(damageInitial * landAmplifier);
             player.setDamageThisRound(fireBlast);
 
@@ -58,7 +64,7 @@ public final class Pyromancer extends Player {
             player.setDamageThisRound(0);
             landAmplifier();
             fireBlast = (int) Math.round(damageInitial
-                    * helper.getFireBlastAmplifierPR() * landAmplifier);
+                    * getFireBlastAmplifierPR() * landAmplifier);
             player.setReceivedDamageWRA((int) Math.round(damageInitial * landAmplifier));
             player.setDamageThisRound(fireBlast);
 
@@ -68,7 +74,7 @@ public final class Pyromancer extends Player {
         public void visit(final Wizard player) {
             landAmplifier();
             fireBlast = (int) Math.round(damageInitial
-                    * helper.getFireBlastAmplifierPW() * landAmplifier);
+                    * getFireBlastAmplifierPW() * landAmplifier);
             player.setReceivedDamageWRA(damageInitial * landAmplifier);
             player.setDamageThisRound(fireBlast);
 
@@ -92,9 +98,9 @@ public final class Pyromancer extends Player {
             landAmplifier();
             damageNextRounds(player);
             ignite = (int) Math.round((baseDamage)
-                   * helper.getIgniteAmplifierPK() * landAmplifier);
+                   * getIgniteAmplifierPK() * landAmplifier);
             player.setDamageExtra((int) Math.round(player.getDamageExtra()
-                    * helper.getIgniteAmplifierPK() * landAmplifier));
+                    * getIgniteAmplifierPK() * landAmplifier));
             player.setReceivedDamageWRA(player.getReceivedDamageWRA()
                     + (int) Math.round(baseDamage * landAmplifier));
             player.setDamageThisRound(player.getDamageThisRound() + ignite);
@@ -106,9 +112,9 @@ public final class Pyromancer extends Player {
             landAmplifier();
             damageNextRounds(player);
             ignite = (int) Math.round((baseDamage)
-                    * helper.getFireBlastAmplifierPP() * landAmplifier);
+                    * getFireBlastAmplifierPP() * landAmplifier);
             player.setDamageExtra((int) Math.round(player.getDamageExtra()
-                    * helper.getFireBlastAmplifierPP() * landAmplifier));
+                    * getFireBlastAmplifierPP() * landAmplifier));
             player.setReceivedDamageWRA(player.getReceivedDamageWRA()
                     + (int) Math.round(baseDamage * landAmplifier));
             player.setDamageThisRound(player.getDamageThisRound() + ignite);
@@ -118,9 +124,9 @@ public final class Pyromancer extends Player {
         public void visit(final Rogue player) {
             landAmplifier();
             damageNextRounds(player);
-            ignite = (int) Math.round(baseDamage * helper.getIgniteAmplifierPR() * landAmplifier);
+            ignite = (int) Math.round(baseDamage * getIgniteAmplifierPR() * landAmplifier);
             player.setDamageExtra((int) Math.round(player.getDamageExtra()
-                     * helper.getIgniteAmplifierPR() * landAmplifier));
+                     * getIgniteAmplifierPR() * landAmplifier));
             player.setReceivedDamageWRA(player.getReceivedDamageWRA()
                     + (int) Math.round(baseDamage * landAmplifier));
             player.setDamageThisRound(player.getDamageThisRound() + ignite);
@@ -130,9 +136,9 @@ public final class Pyromancer extends Player {
         public void visit(final Wizard player) {
             landAmplifier();
             damageNextRounds(player);
-            ignite = (int) Math.round(baseDamage * helper.getIgniteAmplifierPW() * landAmplifier);
+            ignite = (int) Math.round(baseDamage * getIgniteAmplifierPW() * landAmplifier);
             player.setDamageExtra((int) Math.round(player.getDamageExtra()
-                    * helper.getFireBlastAmplifierPW() * landAmplifier));
+                    * getFireBlastAmplifierPW() * landAmplifier));
             player.setReceivedDamageWRA(player.getReceivedDamageWRA()
                     + (int) Math.round(baseDamage * landAmplifier));
             player.setDamageThisRound(player.getDamageThisRound() + ignite);

@@ -1,12 +1,16 @@
 package main;
 
+import angels.Angel;
+import angels.AngelVisitor;
 import gameplan.LookingForPlayersInTheSameSpot;
 import gameplan.Move;
 import readinput.StartGame;
 import fileio.implementations.FileWriter;
 import players.Player;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.util.ArrayList;
 
 
@@ -15,19 +19,25 @@ public final class Main {
 
     public static void main(final String[] args) throws IOException {
         String input = args[0];
-        String output = args[1];
-        // start reading data from file
+        PrintStream file = new PrintStream(new File(args[1]));
+        System.setOut(file);
+         // start reading data from file
         StartGame startGame = new StartGame();
         startGame.readInput(input);
+
         ArrayList<Player> players = startGame.getPlayers();
         int participants = startGame.getParticipants();
         int rounds = startGame.getRounds();
         ArrayList<String> movesRounds = startGame.getMoves();
         Move moves = new Move();
         LookingForPlayersInTheSameSpot theyFight = new LookingForPlayersInTheSameSpot();
+        ArrayList<Angel> angels = startGame.getAngels();
+        ArrayList<Integer> numberAngelPerRound = startGame.getNumberAngelsEachRound();
+
         /* for each round, each player moves
             only if he is not affected by inability to move */
         for (int i = 0; i < rounds; i++) {
+            System.out.println("~~ Round " + (i + 1) + " ~~");
             for (int j = 0; j < participants; j++) {
                 if (players.get(j).getIncapacityOfMovement() == 0) {
                     moves.makeMove(players.get(j), movesRounds.get(i).charAt(j));
@@ -53,28 +63,41 @@ public final class Main {
             for (Player x : players) {
                 x.setWasFighting(0);
             }
+            int angelThisRound = numberAngelPerRound.get(i);
+            while (angelThisRound > 0) {
+                System.out.println("Angel " + angels.get(0).getType() + " was spawned at "
+                        + angels.get(0).getLinePosition() +" "+ angels.get(0).getColumnPosition());
+                for (Player play : players) {
+                    if (play.getLineMap() == angels.get(0).getLinePosition()){
+                        if (play.getColumnMap() == angels.get(0).getColumnPosition()) {
+                            play.accept((AngelVisitor) angels.get(0));
+                        }
+                    }
+                }
+                angelThisRound--;
+                angels.remove(0);
+            }
+            System.out.println("");
         }
-
-        // write data in the output file
-        FileWriter fileWriter = new FileWriter(output);
+        System.out.println("~~ Results ~~");
         for (Player x : players) {
             if (x.getDead() == 0) {
-                fileWriter.writeWord(x.getType() + " ");
-                fileWriter.writeInt(x.getLevel());
-                fileWriter.writeWord(" ");
-                fileWriter.writeInt(x.getXp());
-                fileWriter.writeWord(" ");
-                fileWriter.writeInt(x.getHp());
-                fileWriter.writeWord(" ");
-                fileWriter.writeInt(x.getLineMap());
-                fileWriter.writeWord(" ");
-                fileWriter.writeInt(x.getColumnMap());
+                System.out.print(x.getType() + " ");
+                System.out.print(x.getLevel());
+                System.out.print(" ");
+                System.out.print(x.getXp());
+                System.out.print(" ");
+                System.out.print(x.getHp());
+                System.out.print(" ");
+                System.out.print(x.getLineMap());
+                System.out.print(" ");
+                System.out.print(x.getColumnMap());
             } else {
-                fileWriter.writeWord(x.getType() + " ");
-                fileWriter.writeWord("dead");
+                System.out.print(x.getType() + " ");
+                System.out.print("dead");
             }
-            fileWriter.writeNewLine();
+            System.out.println("");
         }
-        fileWriter.close();
+
     }
 }
