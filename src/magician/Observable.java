@@ -1,7 +1,7 @@
 package magician;
 
 public interface Observable {
-    public void addObserver(Observer o);
-    public void removeObserver(Observer o);
-    public void notifyObserver();
+    void addObserver(Observer o);
+    void removeObserver(Observer o);
+    void notifyObserver();
 }

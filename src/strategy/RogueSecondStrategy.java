@@ -2,13 +2,16 @@ package strategy;
 
 import players.Player;
 
-public class RogueSecondStrategy implements StrategyToPlay {
+public final class RogueSecondStrategy implements StrategyToPlay {
     @Override
-    public void useStrategy(Player player) {
-        if (player.getHp() < (player.getMaxHP() / 7)) {
+    public void useStrategy(final Player player) {
+        final int rogueFirstVariable = 7;
+        final int rogueGiveHp = 2;
+        final float rogueDamage = (float) -0.1;
+        if (player.getHp() < player.getMaxHP() / rogueFirstVariable) {
             AmplifierModifier modifier = new AmplifierModifier();
-            modifier.rogueAmplifierModification(player, (float) -0.1);
-            player.setHp(player.getHp() + player.getHp() / 2);
+            modifier.rogueAmplifierModification(player, rogueDamage);
+            player.setHp(player.getHp() + player.getHp() / rogueGiveHp);
         }
     }
 }

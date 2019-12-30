@@ -2,57 +2,53 @@ package angels.type;
 
 import angels.Angel;
 import angels.AngelVisitor;
-import magician.Magician;
-import players.Player;
 import players.type.Knight;
 import players.type.Pyromancer;
 import players.type.Rogue;
 import players.type.Wizard;
 import strategy.AmplifierModifier;
 
-public class DamageAngel extends Angel implements AngelVisitor {
-    AmplifierModifier modifier = new AmplifierModifier();
-
-   // public DamageAngel(Magician magician){
-     //   this.magician = magician;
-      //  this.magician.addObserver(this);
-   // }
+public final class DamageAngel extends Angel implements AngelVisitor {
+    private AmplifierModifier modifier = new AmplifierModifier();
     @Override
-    public void visit(Knight player) {
+    public void visit(final Knight player) {
         // 15%
         if (player.getDead() == 0) {
-            modifier.knightAmplifierModification(player, (float) 0.15);
+            final float amplifierDamageAngelKnight = (float) 0.15;
+            modifier.knightAmplifierModification(player, amplifierDamageAngelKnight);
         }
     }
 
     @Override
-    public void visit(Pyromancer player) {
+    public void visit(final Pyromancer player) {
         // 20%
         if (player.getDead() == 0) {
-            modifier.pyromancerAmplifierModification(player, (float) 0.2);
+            final float amplifierDamageAngelPyromancer = (float) 0.2;
+            modifier.pyromancerAmplifierModification(player, amplifierDamageAngelPyromancer);
         }
     }
 
     @Override
-    public void visit(Rogue player) {
+    public void visit(final Rogue player) {
         // 30%
         if (player.getDead() == 0) {
-            modifier.rogueAmplifierModification(player, (float) 0.3);
+            final float amplifierDamageAngelRogue = (float) 0.3;
+            modifier.rogueAmplifierModification(player, amplifierDamageAngelRogue);
         }
     }
 
     @Override
-    public void visit(Wizard player) {
+    public void visit(final Wizard player) {
         // 40%
         if (player.getDead() == 0) {
-            modifier. wizardAmplifierModification(player, (float) 0.4);
+            final float amplifierDamageAngelWizard = (float) 0.40;
+            modifier.wizardAmplifierModification(player, amplifierDamageAngelWizard);
         }
     }
 
     @Override
     public void update() {
         if (getActualPlayer().getDead() == 0) {
-
             System.out.println(getType() + " helped " + getActualPlayer().getFullType() + " "
                     + getActualPlayer().getId());
         }

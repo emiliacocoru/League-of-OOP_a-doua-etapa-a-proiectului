@@ -6,9 +6,7 @@ import gameplan.LookingForPlayersInTheSameSpot;
 import gameplan.Move;
 import magician.Magician;
 import readinput.StartGame;
-import fileio.implementations.FileWriter;
 import players.Player;
-import strategy.Context;
 
 import java.io.File;
 import java.io.IOException;

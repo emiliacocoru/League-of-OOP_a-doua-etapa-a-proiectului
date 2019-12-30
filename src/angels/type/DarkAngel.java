@@ -2,45 +2,17 @@ package angels.type;
 
 import angels.Angel;
 import angels.AngelVisitor;
-import magician.Magician;
 import players.type.Knight;
 import players.type.Pyromancer;
 import players.type.Rogue;
 import players.type.Wizard;
-import strategy.AmplifierModifier;
 
-public class DarkAngel extends Angel implements AngelVisitor {
-    AmplifierModifier modifier = new AmplifierModifier();
-
-
-   // public DarkAngel(Magician magician){
-     //   this.magician = magician;
-      //  this.magician.addObserver(this);
-   // }
+public final class DarkAngel extends Angel implements AngelVisitor {
     @Override
-    public void visit(Knight player) {
+    public void visit(final Knight player) {
         if (player.getDead() == 0) {
-            player.setHp(player.getHp() - 40);
-            if(player.getHp() < 0){
-                player.setDead(1);
-            }
-        }
-    }
-
-    @Override
-    public void visit(Pyromancer player) {
-        if (player.getDead() == 0) {
-            player.setHp(player.getHp() - 30);
-            if(player.getHp() < 0){
-                player.setDead(1);
-            }
-        }
-    }
-
-    @Override
-    public void visit(Rogue player) {
-        if (player.getDead() == 0) {
-            player.setHp(player.getHp() - 10);
+            final int damageDarkAngelKnight = 40;
+            player.setHp(player.getHp() - damageDarkAngelKnight);
             if (player.getHp() < 0) {
                 player.setDead(1);
             }
@@ -48,9 +20,32 @@ public class DarkAngel extends Angel implements AngelVisitor {
     }
 
     @Override
-    public void visit(Wizard player) {
+    public void visit(final Pyromancer player) {
         if (player.getDead() == 0) {
-            player.setHp(player.getHp() - 20);
+            final int damageDarkAngelPyromancer = 30;
+            player.setHp(player.getHp() - damageDarkAngelPyromancer);
+            if (player.getHp() < 0) {
+                player.setDead(1);
+            }
+        }
+    }
+
+    @Override
+    public void visit(final Rogue player) {
+        if (player.getDead() == 0) {
+            final int damageDarkAngelRogue = 10;
+            player.setHp(player.getHp() - damageDarkAngelRogue);
+            if (player.getHp() < 0) {
+                player.setDead(1);
+            }
+        }
+    }
+
+    @Override
+    public void visit(final Wizard player) {
+        if (player.getDead() == 0) {
+            final int damageDarkAngelWizard = 20;
+            player.setHp(player.getHp() - damageDarkAngelWizard);
             if (player.getHp() < 0) {
                 player.setDead(1);
             }
@@ -60,7 +55,6 @@ public class DarkAngel extends Angel implements AngelVisitor {
     @Override
     public void update() {
         if (getActualPlayer().getDead() == 0) {
-
             System.out.println(getType() + " hit "
                     + getActualPlayer().getFullType() + " " + getActualPlayer().getId());
         }

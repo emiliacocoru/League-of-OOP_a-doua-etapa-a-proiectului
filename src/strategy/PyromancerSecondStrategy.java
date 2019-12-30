@@ -2,14 +2,16 @@ package strategy;
 
 import players.Player;
 
-public class PyromancerSecondStrategy implements StrategyToPlay{
-
+public final class PyromancerSecondStrategy implements StrategyToPlay {
     @Override
-    public void useStrategy(Player player) {
-        if(player.getHp() < player.getMaxHP() / 4){
+    public void useStrategy(final Player player) {
+        final int pyromancerFirstVariable = 4;
+        final int pyromancerGiveHpVariable = 3;
+        final float pyromancerDamage = (float) -0.3;
+        if (player.getHp() < player.getMaxHP() / pyromancerFirstVariable) {
             AmplifierModifier modifier = new AmplifierModifier();
-            player.setHp(player.getHp() + player.getHp() / 3);
-            modifier.pyromancerAmplifierModification(player, (float) -0.3);
+            player.setHp(player.getHp() + player.getHp() / pyromancerGiveHpVariable);
+            modifier.pyromancerAmplifierModification(player, pyromancerDamage);
         }
     }
 }

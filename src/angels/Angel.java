@@ -19,7 +19,7 @@ public abstract class Angel implements Observable {
         return actualPlayer;
     }
 
-    public void setActualPlayer(Player actualPlayer) {
+    public void setActualPlayer(final Player actualPlayer) {
         this.actualPlayer = actualPlayer;
     }
 
@@ -36,7 +36,7 @@ public abstract class Angel implements Observable {
         return linePosition;
     }
 
-    public void setLinePosition(int linePosition) {
+    public void setLinePosition(final int linePosition) {
         this.linePosition = linePosition;
     }
 
@@ -44,22 +44,22 @@ public abstract class Angel implements Observable {
         return columnPosition;
     }
 
-    public void setColumnPosition(int columnPosition) {
+    public void setColumnPosition(final int columnPosition) {
         this.columnPosition = columnPosition;
     }
 
 
-    public void addObserver(Observer o) {
+    public void addObserver(final Observer o) {
             magician.add(o);
     }
 
-    public void removeObserver(Observer o) {
+    public void removeObserver(final Observer o) {
         magician.remove(o);
     }
 
     @Override
     public void notifyObserver() {
-        for(Observer magic : magician){
+        for (Observer magic : magician) {
             magic.update();
         }
     }

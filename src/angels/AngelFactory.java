@@ -1,13 +1,20 @@
 package angels;
 
-import angels.type.*;
-import magician.Magician;
+import angels.type.DamageAngel;
+import angels.type.DarkAngel;
+import angels.type.Dracula;
+import angels.type.GoodBoy;
+import angels.type.LevelUpAngel;
+import angels.type.LifeGiver;
+import angels.type.SmallAngel;
+import angels.type.Spawner;
+import angels.type.TheDoomer;
+import angels.type.XPAngel;
 
 import java.io.IOException;
-import java.util.function.DoubleBinaryOperator;
 
-public class AngelFactory {
-    public Angel createAngel(String angelType) throws IOException {
+public final class AngelFactory {
+    public Angel createAngel(final String angelType) throws IOException {
         if (angelType.equals("DamageAngel")) {
            return new DamageAngel();
         }

@@ -2,70 +2,49 @@ package angels.type;
 
 import angels.Angel;
 import angels.AngelVisitor;
-import magician.Magician;
 import players.type.Knight;
 import players.type.Pyromancer;
 import players.type.Rogue;
 import players.type.Wizard;
 import strategy.AmplifierModifier;
 
-public class LifeGiver extends Angel implements AngelVisitor {
-    AmplifierModifier modifier = new AmplifierModifier();
-
-    //public LifeGiver(Magician magician){
-      //  this.magician = magician;
-       // this.magician.addObserver(this);
-   // }
+public final class LifeGiver extends Angel implements AngelVisitor {
+    private AmplifierModifier modifier = new AmplifierModifier();
     @Override
-    public void visit(Knight player) {
-        if(player.getDead() == 0) {
-            if (player.getHp() + 100 < player.getMaxHP()) {
-                player.setHp(player.getHp() + 100);
-            } else {
-                player.setHp(player.getMaxHP());
-            }
+    public void visit(final Knight player) {
+        if (player.getDead() == 0) {
+            final int giveHpLifeGiverKnight = 100;
+            player.setHp(Math.min(player.getHp() + giveHpLifeGiverKnight, player.getMaxHP()));
         }
     }
 
     @Override
-    public void visit(Pyromancer player) {
-        if(player.getDead() == 0) {
-            if (player.getHp() + 80 < player.getMaxHP()) {
-                player.setHp(player.getHp() + 80);
-            } else {
-                player.setHp(player.getMaxHP());
-            }
+    public void visit(final Pyromancer player) {
+        if (player.getDead() == 0) {
+            final int giveHpLifeGiverPyromancer = 80;
+            player.setHp(Math.min(player.getHp() + giveHpLifeGiverPyromancer, player.getMaxHP()));
         }
     }
 
     @Override
-    public void visit(Rogue player) {
-        if(player.getDead() == 0) {
-            if (player.getHp() + 90 < player.getMaxHP()) {
-                player.setHp(player.getHp() + 90);
-            } else {
-                player.setHp(player.getMaxHP());
-
-            }
+    public void visit(final Rogue player) {
+        if (player.getDead() == 0) {
+            final int giveHpLifeGiverRogue = 90;
+            player.setHp(Math.min(player.getHp() + giveHpLifeGiverRogue, player.getMaxHP()));
         }
     }
 
     @Override
-    public void visit(Wizard player) {
-        if(player.getDead() == 0) {
-            if (player.getHp() + 120 < player.getMaxHP()) {
-            player.setHp(player.getHp() + 120);
-        } else {
-                player.setHp(player.getMaxHP());
-
-            }
+    public void visit(final Wizard player) {
+        if (player.getDead() == 0) {
+            final int giveHpLifeGiverWizard = 120;
+            player.setHp(Math.min(player.getHp() + giveHpLifeGiverWizard, player.getMaxHP()));
         }
     }
 
     @Override
     public void update() {
         if (getActualPlayer().getDead() == 0) {
-
             System.out.println(getType() + " helped " + getActualPlayer().getFullType()
                     + " " + getActualPlayer().getId());
         }

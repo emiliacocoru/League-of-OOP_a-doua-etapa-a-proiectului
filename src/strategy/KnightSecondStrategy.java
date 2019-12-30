@@ -2,14 +2,16 @@ package strategy;
 
 import players.Player;
 
-public class KnightSecondStrategy implements StrategyToPlay{
-
+public final class KnightSecondStrategy implements StrategyToPlay {
     @Override
-    public void useStrategy(Player player) {
-        if (player.getHp() < (player.getMaxHP() / 3)) {
+    public void useStrategy(final Player player) {
+        final int knightFirstVariable = 3;
+        final float knightDamage = (float) -0.2;
+        final int knightGiveHpVariable = 4;
+        if (player.getHp() < player.getMaxHP() / knightFirstVariable) {
             AmplifierModifier modifier = new AmplifierModifier();
-            modifier.knightAmplifierModification(player, (float) -0.2);
-            player.setHp(player.getHp() + player.getHp() / 4);
+            modifier.knightAmplifierModification(player, knightDamage);
+            player.setHp(player.getHp() + player.getHp() / knightGiveHpVariable);
         }
     }
 }

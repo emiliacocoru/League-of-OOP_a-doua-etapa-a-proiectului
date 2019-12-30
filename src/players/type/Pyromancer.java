@@ -1,18 +1,17 @@
 package players.type;
 
 import angels.AngelVisitor;
-import constant.Constants;
 import gameplan.Map;
 import players.Player;
 import players.visitor.PlayerVisitor;
 
 public final class Pyromancer extends Player {
-    private Constants helper = new Constants();
     private double landAmplifier = 1.0;
     public Pyromancer(final char type) {
         super(type);
-        setMaxHP(helper.getHpInitialPyromancer());
-        setHp(helper.getHpInitialPyromancer());
+        final int hpInitialPyromancer = 500;
+        setMaxHP(hpInitialPyromancer);
+        setHp(hpInitialPyromancer);
         setFullType("Pyromancer");
     }
 
@@ -22,7 +21,8 @@ public final class Pyromancer extends Player {
     // check if it is a land amplifier or not
     public void landAmplifier() {
         if (gameMap[getLineMap()][getColumnMap()] == 'V') {
-            landAmplifier = helper.getLandAmplifierP();
+            final float landAmplifierP = (float) 1.25;
+            landAmplifier = landAmplifierP;
         }
     }
 
@@ -36,8 +36,10 @@ public final class Pyromancer extends Player {
     }
     // first power
     public final class FireBlast implements PlayerVisitor {
-        private int damageInitial = helper.getFireBlastBaseDamage()
-                + helper.getGetFireBlastBaseDamagePerLevel() * getLevel();
+        private final int fireBlastBaseDamage = 350;
+        private final int fireBlastBaseDamagePerLevel = 50;
+        private int damageInitial = fireBlastBaseDamage
+                + fireBlastBaseDamagePerLevel * getLevel();
         private int fireBlast = 0;
 
         @Override
@@ -82,15 +84,19 @@ public final class Pyromancer extends Player {
     }
     // second power
     public final class Ignite implements PlayerVisitor {
-        private int baseDamage = helper.getIgniteDamage()
-                + helper.getIgniteDamagePerLevel() * getLevel();
+        private final int igniteDamage = 150;
+        private final int igniteDamagePerLevel = 20;
+        private int baseDamage = igniteDamage
+                + igniteDamagePerLevel * getLevel();
         private int ignite = 0;
 
         public void damageNextRounds(final Player player) {
+            final int damageExtraPyromancer = 50;
+            final int damageExtraPyromancerPerLevel = 30;
             landAmplifier();
             player.setExtraRounds(2);
-            player.setDamageExtra(helper.getDamageExtraPyromancer()
-                    + helper.getDamageExtraPyromancerPerLevel() * player.getLevel());
+            player.setDamageExtra(damageExtraPyromancer
+                    + damageExtraPyromancerPerLevel * player.getLevel());
             player.setDamageExtra((int) Math.round(player.getDamageExtra() * landAmplifier));
         }
         @Override

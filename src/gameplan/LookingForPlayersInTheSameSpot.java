@@ -43,33 +43,34 @@ public final class LookingForPlayersInTheSameSpot {
                                 if (firstPlayer.getHp() < 0) {
                                     firstPlayer.setDead(1);
                                 }
-                               // System.out.println(firstPlayer.getType() + " " + firstPlayer.getHp());
                                 /* if one manages to kill the other,
                                  he receives xp and is able to level up*/
                                 if (firstPlayer.getDead() == 0 && secondPlayer.getDead() == 1) {
                                     System.out.println("Player " + secondPlayer.getFullType() + " "
                                             + secondPlayer.getId() + " was killed by "
-                                            + firstPlayer.getFullType() + " " + firstPlayer.getId());
+                                            + firstPlayer.getFullType()
+                                            + " " + firstPlayer.getId());
                                     level.getXP(firstPlayer, secondPlayer);
                                     level.xpLevelUp(firstPlayer);
                                 }
                                 if (secondPlayer.getDead() == 0 && firstPlayer.getDead() == 1) {
                                     System.out.println("Player " + firstPlayer.getFullType() + " "
-                                            + firstPlayer.getId() + " was killed by " +
-                                            secondPlayer.getFullType() + " " +secondPlayer.getId());
+                                            + firstPlayer.getId() + " was killed by "
+                                            + secondPlayer.getFullType() + " "
+                                            + secondPlayer.getId());
                                     level.getXP(secondPlayer, firstPlayer);
                                     level.xpLevelUp(secondPlayer);
                                 }
-                                if(firstPlayer.getDead() == 1 && secondPlayer.getDead() == 1){
+                                if (firstPlayer.getDead() == 1 && secondPlayer.getDead() == 1) {
                                     System.out.println("Player " + secondPlayer.getFullType() + " "
                                             + secondPlayer.getId() + " was killed by "
-                                            + firstPlayer.getFullType() + " " + firstPlayer.getId());
+                                            + firstPlayer.getFullType() + " "
+                                            + firstPlayer.getId());
                                     System.out.println("Player " + firstPlayer.getFullType() + " "
-                                            + firstPlayer.getId() + " was killed by " +
-                                            secondPlayer.getFullType() + " " +secondPlayer.getId());
-
+                                            + firstPlayer.getId() + " was killed by "
+                                            + secondPlayer.getFullType() + " "
+                                            + secondPlayer.getId());
                                 }
-
                             }
                         }
                     }

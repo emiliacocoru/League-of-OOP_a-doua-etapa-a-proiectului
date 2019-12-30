@@ -2,15 +2,18 @@ package strategy;
 
 import players.Player;
 
-public class PyromancerFirstStrategy implements  StrategyToPlay{
-
+public final class PyromancerFirstStrategy implements  StrategyToPlay {
     @Override
-    public void useStrategy(Player player) {
-        if (player.getMaxHP() / 4 < player.getHp()) {
-            if(player.getHp() < player.getMaxHP() / 3){
+    public void useStrategy(final Player player) {
+        final int polymarcerFirstVariable = 4;
+        final int polymarcerSecondVariable = 3;
+        final float polymancerAmplifier = (float) 0.7;
+        final int polymancerTakeHpVariable = 4;
+        if (player.getMaxHP() / polymarcerFirstVariable < player.getHp()) {
+            if (player.getHp() < player.getMaxHP() / polymarcerSecondVariable) {
                 AmplifierModifier modifier = new AmplifierModifier();
-                player.setHp(player.getHp() - player.getHp() / 4);
-                modifier.pyromancerAmplifierModification(player, (float) 0.7);
+                player.setHp(player.getHp() - player.getHp() / polymancerTakeHpVariable);
+                modifier.pyromancerAmplifierModification(player, polymancerAmplifier);
             }
         }
     }

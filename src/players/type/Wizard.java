@@ -1,21 +1,19 @@
 package players.type;
 
 import angels.AngelVisitor;
-import constant.Constants;
 import gameplan.Map;
 import players.Player;
 import players.visitor.PlayerVisitor;
 
 public final class Wizard extends Player {
-    private Constants helper = new Constants();
-
     private Map land = new Map();
     private char[][] gameMap = land.getMap();
     private double landAmplifier = 1.0;
     public Wizard(final char type) {
         super(type);
-        setMaxHP(helper.getHpInitialWizard());
-        setHp(helper.getHpInitialWizard());
+        final int hpInitialWizard = 400;
+        setMaxHP(hpInitialWizard);
+        setHp(hpInitialWizard);
         setFullType("Wizard");
     }
 
@@ -29,18 +27,22 @@ public final class Wizard extends Player {
     }
     // check if it is a land amplifier or not
     public void landAmplifier() {
+        final float landAmplifierW = (float) 1.1;
         if (gameMap[getLineMap()][getColumnMap()] == 'D') {
-            landAmplifier = helper.getLandAmplifierW();
+            landAmplifier = landAmplifierW;
         }
     }
     // first power
     public final class Drain implements PlayerVisitor {
         private double baseHP =  0;
         private int damageDrain = 0;
-        private double damageInitial = helper.getDrainDamage()
-                + getLevel() * helper.getDrainDamagePerLevel();
+        private  final float drainDamage = (float) 0.20;
+        private final float drainDamagePerLevel = (float) 0.05;
+        private final float drainPercent = (float) 0.3;
+        private double damageInitial = drainDamage
+                + getLevel() * drainDamagePerLevel;
         public void baseHP(final Player player) {
-            baseHP = Math.min(helper.getDrainPercent() * player.getMaxHP(), player.getHp());
+            baseHP = Math.min(drainPercent * player.getMaxHP(), player.getHp());
         }
 
         @Override
@@ -86,14 +88,17 @@ public final class Wizard extends Player {
     }
     // second power
     public final class Deflect implements PlayerVisitor {
-        private double percentDamage = helper.getDeflectPercent()
-                 + helper.getDeflectPercentPerLevel() * getLevel();
+        private final float deflectPercent = (float) 0.35;
+        private final float deflectPercentPerLevel = (float) 0.02;
+        private final float deflectPercentMaxim = (float) 0.7;
+        private double percentDamage = deflectPercent
+                 + deflectPercentPerLevel * getLevel();
 
         private int deflect = 0;
 
         public void calculatePercent(final Player player) {
-            if (percentDamage > helper.getDeflectPercentMaxim()) {
-                percentDamage = helper.getDeflectPercentMaxim();
+            if (percentDamage > deflectPercentMaxim) {
+                percentDamage = deflectPercentMaxim;
             }
         }
         @Override

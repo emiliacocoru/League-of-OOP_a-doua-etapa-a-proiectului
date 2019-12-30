@@ -3,5 +3,5 @@ package strategy;
 import players.Player;
 
 public interface StrategyToPlay {
-    public void useStrategy(Player player);
+    void useStrategy(Player player);
 }

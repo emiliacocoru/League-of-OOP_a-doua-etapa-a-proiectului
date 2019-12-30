@@ -2,21 +2,21 @@ package players.type;
 
 import angels.AngelVisitor;
 import gameplan.Map;
-import constant.Constants;
 import players.Player;
 import players.visitor.PlayerVisitor;
 
 public final  class Knight extends Player {
-    private Constants helper = new Constants();
     private double landAmplifier = 1.0;
+    private final int hpInitialKnight = 900;
+
     public Knight() {
         super();
         setFullType("Knight");
     }
     public Knight(final char type) {
         super(type);
-        setMaxHP(helper.getHpInitialKnight());
-        setHp(helper.getHpInitialKnight());
+        setMaxHP(hpInitialKnight);
+        setHp(hpInitialKnight);
         setFullType("Knight");
     }
 
@@ -25,33 +25,40 @@ public final  class Knight extends Player {
         player.visit(this);
     }
     @Override
-    public void accept(final AngelVisitor angel){
+    public void accept(final AngelVisitor angel) {
         angel.visit(this);
     }
 
     private Map land = new Map();
     private char[][] gameMap = land.getMap();
     // check if it is a land amplifier or not
-    public void landAmplifier() {
+    private void landAmplifier() {
         if (gameMap[getLineMap()][getColumnMap()] == 'L') {
-            landAmplifier = helper.getLandAmplifierK();
+            final float landAmplifierK = (float) 1.15;
+            landAmplifier = landAmplifierK;
         }
     }
     // first power
     public final class Execute implements PlayerVisitor {
-        private int damageExecuteInitial = helper.getExecuteDamage()
-                + helper.getExecuteDamagePerLevel() * getLevel();
+        private final int levelUpHPKnight = 80;
+        private final int executeDamage = 200;
+        private final int executeDamagePerLevel = 30;
+        private int damageExecuteInitial = executeDamage
+                + executeDamagePerLevel * getLevel();
         private int execute = 0;
         private int hpLimit = 0;
         /* calculates the minimum hp required for a player
            in order not to be killed instantly */
-        public void findHPLimit(final Player player) {
-            if (helper.getExecutePercentPerLevel()
-                    * player.getLevel() > helper.getExecutePercent()) {
-                hpLimit = (int) Math.round(helper.getExecuteMaxPercent() * (player.getMaxHP()));
+        void findHPLimit(final Player player) {
+            final float executePercentPerLevel = (float) 0.01;
+            final float executePercent = (float) 0.2;
+            final float executeMaxPercent = (float) 0.4;
+            if (executePercentPerLevel
+                    * player.getLevel() > executePercent) {
+                hpLimit = (int) Math.round(executeMaxPercent * (player.getMaxHP()));
             } else {
-                hpLimit = (int) Math.round((helper.getExecutePercent()
-                        + helper.getExecutePercentPerLevel()
+                hpLimit = (int) Math.round((executePercent
+                        + executePercentPerLevel
                         * player.getLevel()) * (player.getMaxHP()));
             }
         }
@@ -118,8 +125,10 @@ public final  class Knight extends Player {
     }
 
     public final class Slam implements PlayerVisitor {
-        private int baseDamage = helper.getSlamDamage()
-                + helper.getSlamDamagePerLevel() * getLevel();
+        private final int slamDamage = 100;
+        private final int slamDamagePerLevel = 40;
+        private int baseDamage = slamDamage
+                + slamDamagePerLevel * getLevel();
         private int slam = 0;
         @Override
         public void visit(final Knight player) {

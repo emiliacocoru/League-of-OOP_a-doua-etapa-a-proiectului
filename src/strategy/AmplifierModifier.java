@@ -2,8 +2,8 @@ package strategy;
 
 import players.Player;
 
-public class AmplifierModifier {
-    public void  knightAmplifierModification(final Player player, float percent) {
+public final class AmplifierModifier {
+    public void  knightAmplifierModification(final Player player, final float percent) {
         player.setExecuteAmplifierKP(player.getExecuteAmplifierKP() + percent);
         player.setExecuteAmplifierKR(player.getExecuteAmplifierKR() + percent);
         player.setExecuteAmplifierKW(player.getExecuteAmplifierKW() + percent);
@@ -14,7 +14,7 @@ public class AmplifierModifier {
         player.setSlamAmplifierKW(player.getSlamAmplifierKW() + percent);
     }
 
-    public void pyromancerAmplifierModification(final Player player, float percent) {
+    public void pyromancerAmplifierModification(final Player player, final float percent) {
         player.setFireBlastAmplifierPK(player.getFireBlastAmplifierPK() + percent);
         player.setFireBlastAmplifierPP(player.getFireBlastAmplifierPP() + percent);
         player.setFireBlastAmplifierPR(player.getFireBlastAmplifierPR() + percent);
@@ -25,7 +25,7 @@ public class AmplifierModifier {
         player.setIgniteAmplifierPR(player.getIgniteAmplifierPR() + percent);
         player.setIgniteAmplifierPW(player.getIgniteAmplifierPW() + percent);
     }
-    public void rogueAmplifierModification(final Player player, float percent){
+    public void rogueAmplifierModification(final Player player, final float percent) {
         player.setBackStabAmplifierRK(player.getBackStabAmplifierRK() + percent);
         player.setBackStabAmplifierRP(player.getBackStabAmplifierRP() + percent);
         player.setBackStabAmplifierRR(player.getBackStabAmplifierRR() + percent);
@@ -37,7 +37,7 @@ public class AmplifierModifier {
         player.setParalysisAmplifierRW(player.getParalysisAmplifierRW() + percent);
     }
 
-    public void wizardAmplifierModification(final Player player, float percent){
+    public void wizardAmplifierModification(final Player player, final float percent) {
         player.setDrainAmplifierWK(player.getDrainAmplifierWK() + percent);
         player.setDrainAmplifierWP(player.getDrainAmplifierWP() + percent);
         player.setDrainAmplifierWR(player.getDrainAmplifierWR() + percent);

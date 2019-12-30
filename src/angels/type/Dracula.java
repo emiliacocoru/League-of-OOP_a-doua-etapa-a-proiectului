@@ -2,27 +2,21 @@ package angels.type;
 
 import angels.Angel;
 import angels.AngelVisitor;
-import magician.Magician;
 import players.type.Knight;
 import players.type.Pyromancer;
 import players.type.Rogue;
 import players.type.Wizard;
 import strategy.AmplifierModifier;
 
-public class Dracula extends Angel implements AngelVisitor {
-    AmplifierModifier modifier = new AmplifierModifier();
-
-    //public Dracula(Magician magician){
-      //  this.magician = magician;
-      //  this.magician.addObserver(this);
-    //}
-
-
+public final class Dracula extends Angel implements AngelVisitor {
+    private AmplifierModifier modifier = new AmplifierModifier();
     @Override
-    public void visit(Knight player) {
+    public void visit(final Knight player) {
         if (player.getDead() == 0) {
-            modifier.knightAmplifierModification(player, (float) -0.2);
-            player.setHp(player.getHp() - 60);
+            final float damageDraculaKnight = (float) -0.2;
+            final int damageHpDraculaKnight = 60;
+            modifier.knightAmplifierModification(player, damageDraculaKnight);
+            player.setHp(player.getHp() - damageHpDraculaKnight);
 
             if (getActualPlayer().getHp() < 0) {
                 getActualPlayer().setDead(1);
@@ -32,11 +26,12 @@ public class Dracula extends Angel implements AngelVisitor {
     }
 
     @Override
-    public void visit(Pyromancer player) {
+    public void visit(final Pyromancer player) {
         if (player.getDead() == 0) {
-            modifier.pyromancerAmplifierModification(player, (float) -0.3);
-            player.setHp(player.getHp() - 40);
-
+            final float damageDraculaPyromancer = (float) -0.3;
+            final int damageHpDraculaPyromancer = 40;
+            modifier.pyromancerAmplifierModification(player, damageDraculaPyromancer);
+            player.setHp(player.getHp() - damageHpDraculaPyromancer);
 
             if (getActualPlayer().getHp() < 0) {
                 getActualPlayer().setDead(1);
@@ -46,42 +41,46 @@ public class Dracula extends Angel implements AngelVisitor {
     }
 
     @Override
-    public void visit(Rogue player) {
+    public void visit(final Rogue player) {
         if (player.getDead() == 0) {
-            modifier.rogueAmplifierModification(player, (float) - 0.1);
-            player.setHp(player.getHp() - 35);
+            final float damageDraculaRogue = (float) -0.1;
+            final int damageHpDraculaRogue = 35;
+            modifier.rogueAmplifierModification(player, damageDraculaRogue);
+            player.setHp(player.getHp() - damageHpDraculaRogue);
 
-
-        if (getActualPlayer().getHp() < 0) {
-            getActualPlayer().setDead(1);
-            updateDEAD();
-        }}
+            if (getActualPlayer().getHp() < 0) {
+                getActualPlayer().setDead(1);
+                updateDEAD();
+            }
+        }
     }
 
     @Override
-    public void visit(Wizard player) {
+    public void visit(final Wizard player) {
         if (player.getDead() == 0) {
-            player.setHp(player.getHp() - 20);
-            modifier.wizardAmplifierModification(player, (float) -0.4);
-
-
-        if (getActualPlayer().getHp() < 0) {
-            getActualPlayer().setDead(1);
-            updateDEAD();
-        }}
+            final float damageDraculaWizard = (float) -0.4;
+            final int damageHpDraculaWizard = 20;
+            player.setHp(player.getHp() - damageHpDraculaWizard);
+            modifier.wizardAmplifierModification(player, damageDraculaWizard);
+            if (getActualPlayer().getHp() < 0) {
+                getActualPlayer().setDead(1);
+                updateDEAD();
+            }
+        }
     }
 
     @Override
     public void update() {
         if (getActualPlayer().getDead() == 0) {
-            System.out.println(getType() + " hit " + getActualPlayer().getFullType() + " " + getActualPlayer().getId());
+            System.out.println(getType() + " hit " + getActualPlayer().getFullType()
+                    + " " + getActualPlayer().getId());
         }
     }
-    public void updateDEAD(){
-        if(getActualPlayer().getDead() == 1){
 
-                System.out.println("Player " + getActualPlayer().getFullType() + " " + getActualPlayer().getId() + " was killed by an angel");
-            }
+    private void updateDEAD() {
+        if (getActualPlayer().getDead() == 1) {
+            System.out.println("Player " + getActualPlayer().getFullType()
+                    + " " + getActualPlayer().getId() + " was killed by an angel");
         }
-
+    }
 }

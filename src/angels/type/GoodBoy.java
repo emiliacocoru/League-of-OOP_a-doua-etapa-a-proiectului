@@ -2,63 +2,57 @@ package angels.type;
 
 import angels.Angel;
 import angels.AngelVisitor;
-import magician.Magician;
 import players.type.Knight;
 import players.type.Pyromancer;
 import players.type.Rogue;
 import players.type.Wizard;
 import strategy.AmplifierModifier;
 
-public class GoodBoy extends Angel implements AngelVisitor {
-    AmplifierModifier modifier = new AmplifierModifier();
-
-    //public GoodBoy(Magician magician){
-      //  this.magician = magician;
-       // this.magician.addObserver(this);
-    //}
-
+public final class GoodBoy extends Angel implements AngelVisitor {
+    private AmplifierModifier modifier = new AmplifierModifier();
     @Override
-    public void visit(Knight player) {
+    public void visit(final Knight player) {
         if (player.getDead() == 0) {
-            modifier.knightAmplifierModification(player, (float) 0.4);
-            player.setHp(player.getHp() + 20);
+            final float amplifierGoodBoyKnight = (float) 0.4;
+            final int amplifierHpGoodBoyKnight = 20;
+            modifier.knightAmplifierModification(player, amplifierGoodBoyKnight);
+            player.setHp(player.getHp() + amplifierHpGoodBoyKnight);
         }
     }
 
     @Override
-    public void visit(Pyromancer player) {
+    public void visit(final Pyromancer player) {
         if (player.getDead() == 0) {
-            float percent = (float) 0.5;
-            modifier.pyromancerAmplifierModification(player, percent);
-            player.setHp(player.getHp() + 30);
+            final float amplifierGoodBoyPyromancer = (float) 0.5;
+            final int amplifierHpGoodBoyPyromancer = 30;
+            modifier.pyromancerAmplifierModification(player, amplifierGoodBoyPyromancer);
+            player.setHp(player.getHp() + amplifierHpGoodBoyPyromancer);
         }
     }
 
     @Override
-    public void visit(Rogue player) {
+    public void visit(final Rogue player) {
         if (player.getDead() == 0) {
-
-            float percent = (float) 0.4;
-            modifier.rogueAmplifierModification(player, percent);
-            player.setHp(player.getHp() + 40);
-
+            final float amplifierGoodBoyRogue = (float) 0.4;
+            final int amplifierHpGoodBoyRogue = 40;
+            modifier.rogueAmplifierModification(player, amplifierGoodBoyRogue);
+            player.setHp(player.getHp() + amplifierHpGoodBoyRogue);
         }
     }
 
     @Override
-    public void visit(Wizard player) {
+    public void visit(final Wizard player) {
         if (player.getDead() == 0) {
-            float percent = (float) 0.3;
-            modifier.wizardAmplifierModification(player, percent);
-            player.setHp(player.getHp() + 50);
-
+            final float amplifierGoodBoyWizard = (float) 0.3;
+            final int amplifierHpGoodBoyWizard = 50;
+            modifier.wizardAmplifierModification(player, amplifierGoodBoyWizard);
+            player.setHp(player.getHp() + amplifierHpGoodBoyWizard);
         }
     }
 
     @Override
     public void update() {
         if (getActualPlayer().getDead() == 0) {
-
             System.out.println(getType() + " helped "
                     + getActualPlayer().getFullType() + " " + getActualPlayer().getId());
         }

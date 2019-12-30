@@ -12,12 +12,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public final class StartGame {
-     private int numberLines;
-     private int numberColumns;
-
-    // numberLines + numberColumns = the dimensions of the map
-     private Map gameMap;
-     private int participants;
+    private int participants;
      private int rounds;
      private ArrayList<Player> players = new ArrayList<>();
      private ArrayList<String> moves = new ArrayList<>();
@@ -54,9 +49,10 @@ public final class StartGame {
          // fetches the data from the input file
          // each variable is assigned the necessary information
          FileReader fileReader = new FileReader(input);
-         numberLines = fileReader.nextInt();
-         numberColumns = fileReader.nextInt();
-         gameMap = new Map(numberLines, numberColumns);
+        int numberLines = fileReader.nextInt();
+        int numberColumns = fileReader.nextInt();
+        // numberLines + numberColumns = the dimensions of the map
+        Map gameMap = new Map(numberLines, numberColumns);
          for (int i = 0; i < numberLines; i++) {
             String typeGround = fileReader.nextWord();
             for (int j = 0; j < numberColumns; j++) {
@@ -72,10 +68,12 @@ public final class StartGame {
          for (int i = 0; i < participants; i++) {
             String typePlayer = fileReader.nextWord();
             player = playerCategory.createPlayer(typePlayer.charAt(0));
-            player.setLineMap(fileReader.nextInt());
-            player.setColumnMap(fileReader.nextInt());
-            player.setId(i);
-            players.add(player);
+            if (player !=  null) {
+                player.setLineMap(fileReader.nextInt());
+                player.setColumnMap(fileReader.nextInt());
+                player.setId(i);
+                players.add(player);
+            }
          }
          rounds = fileReader.nextInt(); // number of rounds
          for (int i = 0; i < rounds; i++) {
@@ -100,19 +98,22 @@ public final class StartGame {
                  int columnMapAngel = 0;
                  for (int w = position + 1; w < line.length(); w++) {
                      if (line.charAt(w) == ',') {
-                         lineMapAngel = Integer.valueOf(line.substring(position, w));
+                         lineMapAngel = Integer.parseInt(line.substring(position, w));
                          position = w + 1;
                          w = line.length() +  1;
                      }
                  }
-                 columnMapAngel = Integer.valueOf(line.substring(position, line.length()));
-                 angel = angelCategory.createAngel(angelType);
-                 angel.setType(angelType);
-                 angel.setLinePosition(lineMapAngel);
-                 angel.setColumnPosition(columnMapAngel);
+                 columnMapAngel = Integer.parseInt(line.substring(position, line.length()));
+                 if (angelType != null) {
+                     angel = angelCategory.createAngel(angelType);
+                 }
+                 if (angel != null) {
+                     angel.setType(angelType);
+                     angel.setLinePosition(lineMapAngel);
+                     angel.setColumnPosition(columnMapAngel);
 
-                 angels.add(angel);
-
+                     angels.add(angel);
+                 }
                  numberAngelThisRound--;
              }
          }
