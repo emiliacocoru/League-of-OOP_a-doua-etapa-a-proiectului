@@ -21,7 +21,7 @@ public abstract class Player {
     private int damageThisRound = 0;
     // damageThisRound = all the damage a player receive
     // with land amplifier, bonus damage, race amplifier and so on
-    private double receivedDamageWRA = 0;
+    private float receivedDamageWRA = 0;
     // receivedDamage = the damage a player receive without race amplifier
     private int incapacityOfMovement = 0;
     private int wasFighting = 0;
@@ -44,44 +44,44 @@ public abstract class Player {
             player.setExtraRounds(player.getExtraRounds() - 1);
         }
     }
-    private  double fireBlastAmplifierPR = 0.8;
-    private  double fireBlastAmplifierPK = 1.2;
-    private  double fireBlastAmplifierPP = 0.9;
-    private  double fireBlastAmplifierPW = 1.05;
+    private  float fireBlastAmplifierPR = (float) 0.8;
+    private  float fireBlastAmplifierPK = (float) 1.2;
+    private  float fireBlastAmplifierPP = (float) 0.9;
+    private  float fireBlastAmplifierPW = (float) 1.05;
 
-    private  double igniteAmplifierPR = 0.8;
-    private  double igniteAmplifierPK = 1.2;
-    private  double igniteAmplifierPP = 0.9;
-    private  double igniteAmplifierPW = 1.05;
+    private  float igniteAmplifierPR = (float) 0.8;
+    private  float igniteAmplifierPK = (float) 1.2;
+    private  float igniteAmplifierPP = (float) 0.9;
+    private  float igniteAmplifierPW = (float) 1.05;
 
-    private  double executeAmplifierKR = 1.15;
-    private  double executeAmplifierKK = 1;
-    private  double executeAmplifierKP = 1.1;
-    private  double executeAmplifierKW = 0.8;
+    private  float executeAmplifierKR = (float) 1.15;
+    private  float executeAmplifierKK = 1;
+    private  float executeAmplifierKP = (float) 1.1;
+    private  float executeAmplifierKW = (float) 0.8;
 
-    private  double slamAmplifierKR = 0.8;
-    private  double slamAmplifierKK = 1.2;
-    private  double slamAmplifierKP = 0.9;
-    private  double slamAmplifierKW = 1.05;
+    private  float slamAmplifierKR = (float) 0.8;
+    private  float slamAmplifierKK = (float) 1.2;
+    private  float slamAmplifierKP = (float) 0.9;
+    private  float slamAmplifierKW = (float) 1.05;
 
-    private  double drainAmplifierWR = 0.8;
-    private  double drainAmplifierWK = 1.2;
-    private  double drainAmplifierWP = 0.9;
-    private  double drainAmplifierWW = 1.05;
+    private  float drainAmplifierWR = (float) 0.8;
+    private  float drainAmplifierWK = (float) 1.2;
+    private  float drainAmplifierWP = (float) 0.9;
+    private  float drainAmplifierWW = (float) 1.05;
 
-    private  double deflectAmplifierWR = 1.2;
-    private  double deflectAmplifierWK = 1.4;
-    private  double deflectAmplifierWP = 1.3;
+    private  float deflectAmplifierWR = (float) 1.2;
+    private  float deflectAmplifierWK = (float) 1.4;
+    private  float deflectAmplifierWP = (float) 1.3;
 
-    private  double backStabAmplifierRR = 1.2;
-    private  double backStabAmplifierRK = 0.9;
-    private  double backStabAmplifierRP = 1.25;
-    private  double backStabAmplifierRW = 1.25;
+    private  float backStabAmplifierRR = (float) 1.2;
+    private  float backStabAmplifierRK = (float) 0.9;
+    private  float backStabAmplifierRP = (float) 1.25;
+    private  float backStabAmplifierRW = (float) 1.25;
 
-    private  double paralysisAmplifierRR = 0.9;
-    private  double paralysisAmplifierRK = 0.8;
-    private  double paralysisAmplifierRP = 1.2;
-    private  double paralysisAmplifierRW = 1.25;
+    private  float paralysisAmplifierRR = (float) 0.9;
+    private  float paralysisAmplifierRK = (float) 0.8;
+    private  float paralysisAmplifierRP = (float) 1.2;
+    private  float paralysisAmplifierRW = (float) 1.25;
 
     public String getFullType() {
         return fullType;
@@ -99,251 +99,251 @@ public abstract class Player {
         this.id = id;
     }
 
-    public double getFireBlastAmplifierPR() {
+    public float getFireBlastAmplifierPR() {
         return fireBlastAmplifierPR;
     }
 
-    public void setFireBlastAmplifierPR(double fireBlastAmplifierPR) {
+    public void setFireBlastAmplifierPR(float fireBlastAmplifierPR) {
         this.fireBlastAmplifierPR = fireBlastAmplifierPR;
     }
 
-    public double getFireBlastAmplifierPK() {
+    public float getFireBlastAmplifierPK() {
         return fireBlastAmplifierPK;
     }
 
-    public void setFireBlastAmplifierPK(double fireBlastAmplifierPK) {
+    public void setFireBlastAmplifierPK(float fireBlastAmplifierPK) {
         this.fireBlastAmplifierPK = fireBlastAmplifierPK;
     }
 
-    public double getFireBlastAmplifierPP() {
+    public float getFireBlastAmplifierPP() {
         return fireBlastAmplifierPP;
     }
 
-    public void setFireBlastAmplifierPP(double fireBlastAmplifierPP) {
+    public void setFireBlastAmplifierPP(float fireBlastAmplifierPP) {
         this.fireBlastAmplifierPP = fireBlastAmplifierPP;
     }
 
-    public double getFireBlastAmplifierPW() {
+    public float getFireBlastAmplifierPW() {
         return fireBlastAmplifierPW;
     }
 
-    public void setFireBlastAmplifierPW(double fireBlastAmplifierPW) {
+    public void setFireBlastAmplifierPW(float fireBlastAmplifierPW) {
         this.fireBlastAmplifierPW = fireBlastAmplifierPW;
     }
 
-    public double getIgniteAmplifierPR() {
+    public float getIgniteAmplifierPR() {
         return igniteAmplifierPR;
     }
 
-    public void setIgniteAmplifierPR(double igniteAmplifierPR) {
+    public void setIgniteAmplifierPR(float igniteAmplifierPR) {
         this.igniteAmplifierPR = igniteAmplifierPR;
     }
 
-    public double getIgniteAmplifierPK() {
+    public float getIgniteAmplifierPK() {
         return igniteAmplifierPK;
     }
 
-    public void setIgniteAmplifierPK(double igniteAmplifierPK) {
+    public void setIgniteAmplifierPK(float igniteAmplifierPK) {
         this.igniteAmplifierPK = igniteAmplifierPK;
     }
 
-    public double getIgniteAmplifierPP() {
+    public float getIgniteAmplifierPP() {
         return igniteAmplifierPP;
     }
 
-    public void setIgniteAmplifierPP(double igniteAmplifierPP) {
+    public void setIgniteAmplifierPP(float igniteAmplifierPP) {
         this.igniteAmplifierPP = igniteAmplifierPP;
     }
 
-    public double getIgniteAmplifierPW() {
+    public float getIgniteAmplifierPW() {
         return igniteAmplifierPW;
     }
 
-    public void setIgniteAmplifierPW(double igniteAmplifierPW) {
+    public void setIgniteAmplifierPW(float igniteAmplifierPW) {
         this.igniteAmplifierPW = igniteAmplifierPW;
     }
 
-    public double getExecuteAmplifierKR() {
+    public float getExecuteAmplifierKR() {
         return executeAmplifierKR;
     }
 
-    public void setExecuteAmplifierKR(double executeAmplifierKR) {
+    public void setExecuteAmplifierKR(float executeAmplifierKR) {
         this.executeAmplifierKR = executeAmplifierKR;
     }
 
-    public double getExecuteAmplifierKK() {
+    public float getExecuteAmplifierKK() {
         return executeAmplifierKK;
     }
 
-    public void setExecuteAmplifierKK(double executeAmplifierKK) {
+    public void setExecuteAmplifierKK(float executeAmplifierKK) {
         this.executeAmplifierKK = executeAmplifierKK;
     }
 
-    public double getExecuteAmplifierKP() {
+    public float getExecuteAmplifierKP() {
         return executeAmplifierKP;
     }
 
-    public void setExecuteAmplifierKP(double executeAmplifierKP) {
+    public void setExecuteAmplifierKP(float executeAmplifierKP) {
         this.executeAmplifierKP = executeAmplifierKP;
     }
 
-    public double getExecuteAmplifierKW() {
+    public float getExecuteAmplifierKW() {
         return executeAmplifierKW;
     }
 
-    public void setExecuteAmplifierKW(double executeAmplifierKW) {
+    public void setExecuteAmplifierKW(float executeAmplifierKW) {
         this.executeAmplifierKW = executeAmplifierKW;
     }
 
-    public double getSlamAmplifierKR() {
+    public float getSlamAmplifierKR() {
         return slamAmplifierKR;
     }
 
-    public void setSlamAmplifierKR(double slamAmplifierKR) {
+    public void setSlamAmplifierKR(float slamAmplifierKR) {
         this.slamAmplifierKR = slamAmplifierKR;
     }
 
-    public double getSlamAmplifierKK() {
+    public float getSlamAmplifierKK() {
         return slamAmplifierKK;
     }
 
-    public void setSlamAmplifierKK(double slamAmplifierKK) {
+    public void setSlamAmplifierKK(float slamAmplifierKK) {
         this.slamAmplifierKK = slamAmplifierKK;
     }
 
-    public double getSlamAmplifierKP() {
+    public float getSlamAmplifierKP() {
         return slamAmplifierKP;
     }
 
-    public void setSlamAmplifierKP(double slamAmplifierKP) {
+    public void setSlamAmplifierKP(float slamAmplifierKP) {
         this.slamAmplifierKP = slamAmplifierKP;
     }
 
-    public double getSlamAmplifierKW() {
+    public float getSlamAmplifierKW() {
         return slamAmplifierKW;
     }
 
-    public void setSlamAmplifierKW(double slamAmplifierKW) {
+    public void setSlamAmplifierKW(float slamAmplifierKW) {
         this.slamAmplifierKW = slamAmplifierKW;
     }
 
-    public double getDrainAmplifierWR() {
+    public float getDrainAmplifierWR() {
         return drainAmplifierWR;
     }
 
-    public void setDrainAmplifierWR(double drainAmplifierWR) {
+    public void setDrainAmplifierWR(float drainAmplifierWR) {
         this.drainAmplifierWR = drainAmplifierWR;
     }
 
-    public double getDrainAmplifierWK() {
+    public float getDrainAmplifierWK() {
         return drainAmplifierWK;
     }
 
-    public void setDrainAmplifierWK(double drainAmplifierWK) {
+    public void setDrainAmplifierWK(float drainAmplifierWK) {
         this.drainAmplifierWK = drainAmplifierWK;
     }
 
-    public double getDrainAmplifierWP() {
+    public float getDrainAmplifierWP() {
         return drainAmplifierWP;
     }
 
-    public void setDrainAmplifierWP(double drainAmplifierWP) {
+    public void setDrainAmplifierWP(float drainAmplifierWP) {
         this.drainAmplifierWP = drainAmplifierWP;
     }
 
-    public double getDrainAmplifierWW() {
+    public float getDrainAmplifierWW() {
         return drainAmplifierWW;
     }
 
-    public void setDrainAmplifierWW(double drainAmplifierWW) {
+    public void setDrainAmplifierWW(float drainAmplifierWW) {
         this.drainAmplifierWW = drainAmplifierWW;
     }
 
-    public double getDeflectAmplifierWR() {
+    public float getDeflectAmplifierWR() {
         return deflectAmplifierWR;
     }
 
-    public void setDeflectAmplifierWR(double deflectAmplifierWR) {
+    public void setDeflectAmplifierWR(float deflectAmplifierWR) {
         this.deflectAmplifierWR = deflectAmplifierWR;
     }
 
-    public double getDeflectAmplifierWK() {
+    public float getDeflectAmplifierWK() {
         return deflectAmplifierWK;
     }
 
-    public void setDeflectAmplifierWK(double deflectAmplifierWK) {
+    public void setDeflectAmplifierWK(float deflectAmplifierWK) {
         this.deflectAmplifierWK = deflectAmplifierWK;
     }
 
-    public double getDeflectAmplifierWP() {
+    public float getDeflectAmplifierWP() {
         return deflectAmplifierWP;
     }
 
-    public void setDeflectAmplifierWP(double deflectAmplifierWP) {
+    public void setDeflectAmplifierWP(float deflectAmplifierWP) {
         this.deflectAmplifierWP = deflectAmplifierWP;
     }
 
-    public double getBackStabAmplifierRR() {
+    public float getBackStabAmplifierRR() {
         return backStabAmplifierRR;
     }
 
-    public void setBackStabAmplifierRR(double backStabAmplifierRR) {
+    public void setBackStabAmplifierRR(float backStabAmplifierRR) {
         this.backStabAmplifierRR = backStabAmplifierRR;
     }
 
-    public double getBackStabAmplifierRK() {
+    public float getBackStabAmplifierRK() {
         return backStabAmplifierRK;
     }
 
-    public void setBackStabAmplifierRK(double backStabAmplifierRK) {
+    public void setBackStabAmplifierRK(float backStabAmplifierRK) {
         this.backStabAmplifierRK = backStabAmplifierRK;
     }
 
-    public double getBackStabAmplifierRP() {
+    public float getBackStabAmplifierRP() {
         return backStabAmplifierRP;
     }
 
-    public void setBackStabAmplifierRP(double backStabAmplifierRP) {
+    public void setBackStabAmplifierRP(float backStabAmplifierRP) {
         this.backStabAmplifierRP = backStabAmplifierRP;
     }
 
-    public double getBackStabAmplifierRW() {
+    public float getBackStabAmplifierRW() {
         return backStabAmplifierRW;
     }
 
-    public void setBackStabAmplifierRW(double backStabAmplifierRW) {
+    public void setBackStabAmplifierRW(float backStabAmplifierRW) {
         this.backStabAmplifierRW = backStabAmplifierRW;
     }
 
-    public double getParalysisAmplifierRR() {
+    public float getParalysisAmplifierRR() {
         return paralysisAmplifierRR;
     }
 
-    public void setParalysisAmplifierRR(double paralysisAmplifierRR) {
+    public void setParalysisAmplifierRR(float paralysisAmplifierRR) {
         this.paralysisAmplifierRR = paralysisAmplifierRR;
     }
 
-    public double getParalysisAmplifierRK() {
+    public float getParalysisAmplifierRK() {
         return paralysisAmplifierRK;
     }
 
-    public void setParalysisAmplifierRK(double paralysisAmplifierRK) {
+    public void setParalysisAmplifierRK(float paralysisAmplifierRK) {
         this.paralysisAmplifierRK = paralysisAmplifierRK;
     }
 
-    public double getParalysisAmplifierRP() {
+    public float getParalysisAmplifierRP() {
         return paralysisAmplifierRP;
     }
 
-    public void setParalysisAmplifierRP(double paralysisAmplifierRP) {
+    public void setParalysisAmplifierRP(float paralysisAmplifierRP) {
         this.paralysisAmplifierRP = paralysisAmplifierRP;
     }
 
-    public double getParalysisAmplifierRW() {
+    public float getParalysisAmplifierRW() {
         return paralysisAmplifierRW;
     }
 
-    public void setParalysisAmplifierRW(double paralysisAmplifierRW) {
+    public void setParalysisAmplifierRW(float paralysisAmplifierRW) {
         this.paralysisAmplifierRW = paralysisAmplifierRW;
     }
     public final char getType() {
@@ -427,11 +427,11 @@ public abstract class Player {
         this.damageThisRound = damageThisRound;
     }
 
-    public final double getReceivedDamageWRA() {
+    public final float getReceivedDamageWRA() {
         return receivedDamageWRA;
     }
 
-    public final void setReceivedDamageWRA(final double receivedDamageWRA) {
+    public final void setReceivedDamageWRA(final float receivedDamageWRA) {
         this.receivedDamageWRA = receivedDamageWRA;
     }
 

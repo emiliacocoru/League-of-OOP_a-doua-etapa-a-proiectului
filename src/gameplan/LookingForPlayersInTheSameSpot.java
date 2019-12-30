@@ -43,7 +43,7 @@ public final class LookingForPlayersInTheSameSpot {
                                 if (firstPlayer.getHp() < 0) {
                                     firstPlayer.setDead(1);
                                 }
-
+                               // System.out.println(firstPlayer.getType() + " " + firstPlayer.getHp());
                                 /* if one manages to kill the other,
                                  he receives xp and is able to level up*/
                                 if (firstPlayer.getDead() == 0 && secondPlayer.getDead() == 1) {

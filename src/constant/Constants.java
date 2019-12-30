@@ -4,44 +4,44 @@ public final class Constants {
     public Constants() {
     }
     // here are all the constants taken from the requirement
-    private final  double fireBlastAmplifierPR = 0.8;
-    private final  double fireBlastAmplifierPK = 1.2;
-    private final  double fireBlastAmplifierPP = 0.9;
-    private final  double fireBlastAmplifierPW = 1.05;
+   /* private final  float fireBlastAmplifierPR = 0.8;
+    private final  float fireBlastAmplifierPK = 1.2;
+    private final  float fireBlastAmplifierPP = 0.9;
+    private final  float fireBlastAmplifierPW = 1.05;
 
-    private final  double igniteAmplifierPR = 0.8;
-    private final  double igniteAmplifierPK = 1.2;
-    private final  double igniteAmplifierPP = 0.9;
-    private final  double igniteAmplifierPW = 1.05;
+    private final  float igniteAmplifierPR = 0.8;
+    private final  float igniteAmplifierPK = 1.2;
+    private final  float igniteAmplifierPP = 0.9;
+    private final  float igniteAmplifierPW = 1.05;
 
-    private final  double executeAmplifierKR = 1.15;
-    private final  double executeAmplifierKK = 1;
-    private final  double executeAmplifierKP = 1.1;
-    private final  double executeAmplifierKW = 0.8;
+    private final  float executeAmplifierKR = 1.15;
+    private final  float executeAmplifierKK = 1;
+    private final  float executeAmplifierKP = 1.1;
+    private final  float executeAmplifierKW = 0.8;
 
-    private final  double slamAmplifierKR = 0.8;
-    private final  double slamAmplifierKK = 1.2;
-    private final  double slamAmplifierKP = 0.9;
-    private final  double slamAmplifierKW = 1.05;
+    private final  float slamAmplifierKR = 0.8;
+    private final  float slamAmplifierKK = 1.2;
+    private final  float slamAmplifierKP = 0.9;
+    private final  float slamAmplifierKW = 1.05;
 
-    private final  double drainAmplifierWR = 0.8;
-    private final  double drainAmplifierWK = 1.2;
-    private final  double drainAmplifierWP = 0.9;
-    private final  double drainAmplifierWW = 1.05;
+    private final  float drainAmplifierWR = 0.8;
+    private final  float drainAmplifierWK = 1.2;
+    private final  float drainAmplifierWP = 0.9;
+    private final  float drainAmplifierWW = 1.05;
 
-    private final  double deflectAmplifierWR = 1.2;
-    private final  double deflectAmplifierWK = 1.4;
-    private final  double deflectAmplifierWP = 1.3;
+    private final  float deflectAmplifierWR = 1.2;
+    private final  float deflectAmplifierWK = 1.4;
+    private final  float deflectAmplifierWP = 1.3;
 
-    private final  double backStabAmplifierRR = 1.2;
-    private final  double backStabAmplifierRK = 0.9;
-    private final  double backStabAmplifierRP = 1.25;
-    private final  double backStabAmplifierRW = 1.25;
+    private final  float backStabAmplifierRR = 1.2;
+    private final  float backStabAmplifierRK = 0.9;
+    private final  float backStabAmplifierRP = 1.25;
+    private final  float backStabAmplifierRW = 1.25;
 
-    private final  double paralysisAmplifierRR = 0.9;
-    private final  double paralysisAmplifierRK = 0.8;
-    private final  double paralysisAmplifierRP = 1.2;
-    private final  double paralysisAmplifierRW = 1.25;
+    private final  float paralysisAmplifierRR = 0.9;
+    private final  float paralysisAmplifierRK = 0.8;
+    private final  float paralysisAmplifierRP = 1.2;
+    private final  float paralysisAmplifierRW = 1.25;*/
 
     private final int hpInitialKnight = 900;
     private final int hpInitialRogue = 600;
@@ -57,11 +57,11 @@ public final class Constants {
     private final int levelUpValue = 250;
     private final int levelUpPerLevelValue = 50;
 
-    private final double landAmplifierR = 1.15;
+    private final float landAmplifierR = (float) 1.15;
     private final int numberOfRoundsWithoutAmplifier = 3;
     private final int numberOfRoundsWithAmplifier = 6;
     private final int hitsNumber = 3;
-    private final double percentBonusRogue = 1.5;
+    private final float percentBonusRogue = (float) 1.5;
 
     private final int bachStabBaseDamage = 200;
     private final int bacKStabBaseDamagePerLevel = 20;
@@ -69,22 +69,22 @@ public final class Constants {
     private final int fireBlastBaseDamage = 350;
     private final int getFireBlastBaseDamagePerLevel = 50;
 
-    private final double landAmplifierP = 1.25;
+    private final float landAmplifierP = (float) 1.25;
 
-    private final double landAmplifierW = 1.1;
+    private final float landAmplifierW = (float) 1.1;
 
-    private final double deflectPercent = 0.35;
-    private final double deflectPercentPerLevel = 0.02;
-    private final double deflectPercentMaxim = 0.7;
+    private final float deflectPercent = (float) 0.35;
+    private final float deflectPercentPerLevel = (float) 0.02;
+    private final float deflectPercentMaxim = (float) 0.7;
 
-    private  final double drainDamage = 0.20;
-    private final double drainDamagePerLevel = 0.05;
-    private final double drainPercent = 0.3;
+    private  final float drainDamage = (float) 0.20;
+    private final float drainDamagePerLevel = (float) 0.05;
+    private final float drainPercent = (float) 0.3;
 
-    private final double landAmplifierK = 1.15;
-    private final double executePercentPerLevel = 0.01;
-    private final double executePercent = 0.2;
-    private final double executeMaxPercent = 0.4;
+    private final float landAmplifierK = (float) 1.15;
+    private final float executePercentPerLevel = (float) 0.01;
+    private final float executePercent = (float) 0.2;
+    private final float executeMaxPercent = (float) 0.4;
 
     private final int paralysisDamage = 40;
     private final int paralysisDamagePerLevel = 10;
@@ -137,19 +137,19 @@ public final class Constants {
         return paralysisDamagePerLevel;
     }
 
-    public double getExecutePercentPerLevel() {
+    public float getExecutePercentPerLevel() {
         return executePercentPerLevel;
     }
 
-    public double getExecutePercent() {
+    public float getExecutePercent() {
         return executePercent;
     }
 
-    public double getExecuteMaxPercent() {
+    public float getExecuteMaxPercent() {
         return executeMaxPercent;
     }
 
-    public double getLandAmplifierK() {
+    public float getLandAmplifierK() {
         return landAmplifierK;
     }
 
@@ -169,35 +169,35 @@ public final class Constants {
         return hpInitialWizard;
     }
 
-    public double getDrainPercent() {
+    public float getDrainPercent() {
         return drainPercent;
     }
 
-    public double getDrainDamage() {
+    public float getDrainDamage() {
         return drainDamage;
     }
 
-    public double getDrainDamagePerLevel() {
+    public float getDrainDamagePerLevel() {
         return drainDamagePerLevel;
     }
 
-    public double getDeflectPercentMaxim() {
+    public float getDeflectPercentMaxim() {
         return deflectPercentMaxim;
     }
 
-    public double getDeflectPercent() {
+    public float getDeflectPercent() {
         return deflectPercent;
     }
 
-    public double getDeflectPercentPerLevel() {
+    public float getDeflectPercentPerLevel() {
         return deflectPercentPerLevel;
     }
 
-    public double getLandAmplifierW() {
+    public float getLandAmplifierW() {
         return landAmplifierW;
     }
 
-    public double getLandAmplifierP() {
+    public float getLandAmplifierP() {
         return landAmplifierP;
     }
 
@@ -217,7 +217,7 @@ public final class Constants {
         return bacKStabBaseDamagePerLevel;
     }
 
-    public double getPercentBonusRogue() {
+    public float getPercentBonusRogue() {
         return percentBonusRogue;
     }
 
@@ -225,7 +225,7 @@ public final class Constants {
         return hitsNumber;
     }
 
-    public double getLandAmplifierR() {
+    public float getLandAmplifierR() {
         return landAmplifierR;
     }
 

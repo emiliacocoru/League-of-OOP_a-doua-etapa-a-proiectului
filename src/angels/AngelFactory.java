@@ -1,6 +1,7 @@
 package angels;
 
 import angels.type.*;
+import magician.Magician;
 
 import java.io.IOException;
 import java.util.function.DoubleBinaryOperator;

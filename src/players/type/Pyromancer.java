@@ -45,7 +45,7 @@ public final class Pyromancer extends Player {
             landAmplifier();
             fireBlast = (int) Math.round(damageInitial
                     * getFireBlastAmplifierPK() * landAmplifier);
-            player.setReceivedDamageWRA(damageInitial * landAmplifier);
+            player.setReceivedDamageWRA((float) (damageInitial * landAmplifier));
             player.setDamageThisRound(fireBlast);
         }
 
@@ -54,7 +54,7 @@ public final class Pyromancer extends Player {
             landAmplifier();
             fireBlast = (int) Math.round(damageInitial
                     * getFireBlastAmplifierPP() * landAmplifier);
-            player.setReceivedDamageWRA(damageInitial * landAmplifier);
+            player.setReceivedDamageWRA((float) (damageInitial * landAmplifier));
             player.setDamageThisRound(fireBlast);
 
         }
@@ -75,7 +75,7 @@ public final class Pyromancer extends Player {
             landAmplifier();
             fireBlast = (int) Math.round(damageInitial
                     * getFireBlastAmplifierPW() * landAmplifier);
-            player.setReceivedDamageWRA(damageInitial * landAmplifier);
+            player.setReceivedDamageWRA((float) (damageInitial * landAmplifier));
             player.setDamageThisRound(fireBlast);
 
         }

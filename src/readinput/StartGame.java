@@ -4,6 +4,7 @@ import angels.Angel;
 import angels.AngelFactory;
 import gameplan.Map;
 import fileio.implementations.FileReader;
+import magician.Magician;
 import players.Player;
 import players.PlayerFactory;
 
@@ -13,7 +14,8 @@ import java.util.ArrayList;
 public final class StartGame {
      private int numberLines;
      private int numberColumns;
-     // numberLines + numberColumns = the dimensions of the map
+
+    // numberLines + numberColumns = the dimensions of the map
      private Map gameMap;
      private int participants;
      private int rounds;
@@ -104,11 +106,11 @@ public final class StartGame {
                      }
                  }
                  columnMapAngel = Integer.valueOf(line.substring(position, line.length()));
-
                  angel = angelCategory.createAngel(angelType);
                  angel.setType(angelType);
                  angel.setLinePosition(lineMapAngel);
                  angel.setColumnPosition(columnMapAngel);
+
                  angels.add(angel);
 
                  numberAngelThisRound--;

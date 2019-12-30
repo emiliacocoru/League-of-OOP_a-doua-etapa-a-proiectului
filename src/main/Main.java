@@ -4,9 +4,11 @@ import angels.Angel;
 import angels.AngelVisitor;
 import gameplan.LookingForPlayersInTheSameSpot;
 import gameplan.Move;
+import magician.Magician;
 import readinput.StartGame;
 import fileio.implementations.FileWriter;
 import players.Player;
+import strategy.Context;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,7 +23,7 @@ public final class Main {
         String input = args[0];
         PrintStream file = new PrintStream(new File(args[1]));
         System.setOut(file);
-         // start reading data from file
+         //start reading data from file
         StartGame startGame = new StartGame();
         startGame.readInput(input);
 
@@ -54,6 +56,7 @@ public final class Main {
                     players.get(w).setDead(1);
                 }
             }
+
             // two players in thw same spot will fight
             theyFight.lookingForPlayersInTheSameSpot(players);
             /* the wasFighting variable is to prevent a player
@@ -64,12 +67,17 @@ public final class Main {
                 x.setWasFighting(0);
             }
             int angelThisRound = numberAngelPerRound.get(i);
+            Magician magician = new Magician();
+            int count = 0;
             while (angelThisRound > 0) {
-                System.out.println("Angel " + angels.get(0).getType() + " was spawned at "
-                        + angels.get(0).getLinePosition() +" "+ angels.get(0).getColumnPosition());
+                magician.setAngel(angels.get(0));
+                angels.get(0).addObserver(magician);
                 for (Player play : players) {
-                    if (play.getLineMap() == angels.get(0).getLinePosition()){
+                    if (play.getLineMap() == angels.get(0).getLinePosition()) {
                         if (play.getColumnMap() == angels.get(0).getColumnPosition()) {
+                            angels.get(0).setActualPlayer(play);
+                            //magician.update();
+                            angels.get(0).notifyObserver();
                             play.accept((AngelVisitor) angels.get(0));
                         }
                     }

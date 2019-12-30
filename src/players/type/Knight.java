@@ -61,12 +61,11 @@ public final  class Knight extends Player {
             findHPLimit(player);
             if (player.getHp() < hpLimit) {
                 execute = player.getHp();
-                player.setReceivedDamageWRA(execute);
             } else {
                 execute = (int) Math.round(damageExecuteInitial * landAmplifier
                          * getExecuteAmplifierKK());
-                player.setReceivedDamageWRA((int) Math.round(damageExecuteInitial * landAmplifier));
             }
+            player.setReceivedDamageWRA((int) Math.round(damageExecuteInitial * landAmplifier));
             player.setDamageThisRound(execute);
         }
 
@@ -108,12 +107,11 @@ public final  class Knight extends Player {
             findHPLimit(player);
             if (player.getHp() < hpLimit) {
                 execute = player.getHp();
-                player.setReceivedDamageWRA(execute);
             } else {
                 execute = (int) Math.round(damageExecuteInitial * landAmplifier
                         * getExecuteAmplifierKW());
-                player.setReceivedDamageWRA(damageExecuteInitial * landAmplifier);
             }
+            player.setReceivedDamageWRA((int) Math.round(damageExecuteInitial * landAmplifier));
             player.setDamageThisRound(execute);
 
         }
@@ -162,6 +160,7 @@ public final  class Knight extends Player {
         @Override
         public void visit(final Wizard player) {
             landAmplifier();
+
             slam = (int) Math.round(baseDamage * getSlamAmplifierKW() * landAmplifier);
             player.setReceivedDamageWRA((player.getReceivedDamageWRA())
                     + (int) Math.round(baseDamage * landAmplifier));

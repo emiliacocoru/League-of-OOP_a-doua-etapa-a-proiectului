@@ -2,21 +2,26 @@ package angels.type;
 
 import angels.Angel;
 import angels.AngelVisitor;
+import magician.Magician;
+import players.Player;
 import players.type.Knight;
 import players.type.Pyromancer;
 import players.type.Rogue;
 import players.type.Wizard;
+import strategy.AmplifierModifier;
 
 public class DamageAngel extends Angel implements AngelVisitor {
+    AmplifierModifier modifier = new AmplifierModifier();
 
+   // public DamageAngel(Magician magician){
+     //   this.magician = magician;
+      //  this.magician.addObserver(this);
+   // }
     @Override
     public void visit(Knight player) {
         // 15%
         if (player.getDead() == 0) {
-            double percent = 0.15;
-            knightAmplifierModification(player, percent);
-            System.out.println(getType() + " helped " + player.getFullType() + " "
-                    + player.getId());
+            modifier.knightAmplifierModification(player, (float) 0.15);
         }
     }
 
@@ -24,10 +29,7 @@ public class DamageAngel extends Angel implements AngelVisitor {
     public void visit(Pyromancer player) {
         // 20%
         if (player.getDead() == 0) {
-            double percent = 0.2;
-            pyromancerAmplifierModification(player, percent);
-            System.out.println(getType() + " helped " + player.getFullType() + " "
-                    + player.getId());
+            modifier.pyromancerAmplifierModification(player, (float) 0.2);
         }
     }
 
@@ -35,10 +37,7 @@ public class DamageAngel extends Angel implements AngelVisitor {
     public void visit(Rogue player) {
         // 30%
         if (player.getDead() == 0) {
-            double percent = 0.3;
-            rogueAmplifierModification(player, percent);
-            System.out.println(getType() + " helped " + player.getFullType() + " "
-                    + player.getId());
+            modifier.rogueAmplifierModification(player, (float) 0.3);
         }
     }
 
@@ -46,10 +45,16 @@ public class DamageAngel extends Angel implements AngelVisitor {
     public void visit(Wizard player) {
         // 40%
         if (player.getDead() == 0) {
-            double percent = 0.4;
-            wizardAmplifierModification(player, percent);
-            System.out.println(getType() + " helped " + player.getFullType() + " "
-                    + player.getId());
+            modifier. wizardAmplifierModification(player, (float) 0.4);
+        }
+    }
+
+    @Override
+    public void update() {
+        if (getActualPlayer().getDead() == 0) {
+
+            System.out.println(getType() + " helped " + getActualPlayer().getFullType() + " "
+                    + getActualPlayer().getId());
         }
     }
 }
