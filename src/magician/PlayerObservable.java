@@ -7,31 +7,31 @@ import java.util.ArrayList;
 public class PlayerObservable implements Observable {
     private ArrayList<Observer> magician = new ArrayList<>();
 
-    public void addObserver(final Observer o) {
+    public final void addObserver(final Observer o) {
         magician.add(o);
     }
 
-    public void removeObserver(final Observer o) {
+    public final void removeObserver(final Observer o) {
         magician.remove(o);
     }
 
     @Override
-    public void notifyObserver() {
+    public final void notifyObserver() {
     }
 
     @Override
-    public void notifyObserverForDead() {
+    public final void notifyObserverForDead() {
         for (Observer magic : magician) {
             magic.updatePlayerDead();
         }
     }
-    public void notifyObserverForLevelUp() {
+    public final void notifyObserverForLevelUp() {
         for (Observer magic : magician) {
             magic.updateLevelUp();
         }
     }
 
-    public void updateDead(Player firstPlayer, Player secondPlayer) {
+    final void updateDead(final Player firstPlayer, final Player secondPlayer) {
         if (firstPlayer.getDead() == 0 && secondPlayer.getDead() == 1) {
             System.out.println("Player " + secondPlayer.getFullType() + " "
                     + secondPlayer.getId() + " was killed by "
@@ -55,9 +55,9 @@ public class PlayerObservable implements Observable {
                     + secondPlayer.getId());
         }
     }
-        public void updateLevelUp(Player winner) {
-            System.out.println(winner.getFullType() + " " + winner.getId() + " reached level "
-                    + winner.getLevel());
+    final void updateLevelUp(final Player winner) {
+        System.out.println(winner.getFullType() + " " + winner.getId() + " reached level "
+                + winner.getLevel());
 
     }
 }

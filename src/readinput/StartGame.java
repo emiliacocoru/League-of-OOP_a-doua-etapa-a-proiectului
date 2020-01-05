@@ -4,7 +4,6 @@ import angels.Angel;
 import angels.AngelFactory;
 import gameplan.Map;
 import fileio.implementations.FileReader;
-import magician.Magician;
 import players.Player;
 import players.PlayerFactory;
 

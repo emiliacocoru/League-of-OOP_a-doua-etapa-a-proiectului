@@ -15,50 +15,50 @@ public abstract class Angel implements Observable {
     public abstract void update();
     private Player actualPlayer = null;
 
-    public Player getActualPlayer() {
+    public final Player getActualPlayer() {
         return actualPlayer;
     }
 
-    public void setActualPlayer(final Player actualPlayer) {
+    public final void setActualPlayer(final Player actualPlayer) {
         this.actualPlayer = actualPlayer;
     }
 
 
-    public String getType() {
+    public final String getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public final void setType(final String type) {
         this.type = type;
     }
 
-    public int getLinePosition() {
+    public final  int getLinePosition() {
         return linePosition;
     }
 
-    public void setLinePosition(final int linePosition) {
+    public final void setLinePosition(final int linePosition) {
         this.linePosition = linePosition;
     }
 
-    public int getColumnPosition() {
+    public final int getColumnPosition() {
         return columnPosition;
     }
 
-    public void setColumnPosition(final int columnPosition) {
+    public final void setColumnPosition(final int columnPosition) {
         this.columnPosition = columnPosition;
     }
 
 
-    public void addObserver(final Observer o) {
+    public final void addObserver(final Observer o) {
             magician.add(o);
     }
 
-    public void removeObserver(final Observer o) {
+    public final void removeObserver(final Observer o) {
         magician.remove(o);
     }
 
     @Override
-    public void notifyObserver() {
+    public final void notifyObserver() {
         for (Observer magic : magician) {
             magic.update();
         }

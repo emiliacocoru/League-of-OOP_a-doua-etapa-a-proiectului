@@ -30,7 +30,7 @@ public final class Pyromancer extends Player {
         player.visit(this);
     }
     @Override
-    public void accept(final AngelVisitor angel){
+    public void accept(final AngelVisitor angel) {
         angel.visit(this);
     }
     // first power

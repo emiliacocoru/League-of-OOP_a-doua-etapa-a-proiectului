@@ -11,8 +11,8 @@ import strategy.RogueSecondStrategy;
 import strategy.WizardFirstStrategy;
 import strategy.WizardSecondStrategy;
 
-public class ChooseStrategy {
-    public void playerChooseStrategy(Player player) {
+final class ChooseStrategy {
+    void playerChooseStrategy(final Player player) {
         Context context = null;
         if (player.getType() == 'K') {
             if (player.getIncapacityOfMovementThisRound() == 0) {

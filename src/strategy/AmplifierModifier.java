@@ -9,7 +9,8 @@ public final class AmplifierModifier {
         player.setExecuteAmplifierKW(player.getExecuteAmplifierKW() + percent);
 
         player.setSlamAmplifierKK(player.getSlamAmplifierKK() + percent);
-        player.setSlamAmplifierKR(player.getSlamAmplifierKR() + percent + 0.001f);
+        final float bonusForAccuracy = 0.001f;
+        player.setSlamAmplifierKR(player.getSlamAmplifierKR() + percent + bonusForAccuracy);
         player.setSlamAmplifierKP(player.getSlamAmplifierKP() + percent);
         player.setSlamAmplifierKW(player.getSlamAmplifierKW() + percent);
     }

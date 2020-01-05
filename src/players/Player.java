@@ -1,7 +1,6 @@
 package players;
 
 import angels.AngelVisitor;
-import magician.PlayerObservable;
 import players.visitor.PlayerVisitor;
 
 public abstract class Player {

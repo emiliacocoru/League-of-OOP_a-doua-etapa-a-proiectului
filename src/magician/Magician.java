@@ -3,8 +3,6 @@ package magician;
 import angels.Angel;
 import players.Player;
 
-import java.util.ArrayList;
-
 public final class Magician implements Observer {
     private static Magician magician = null;
     private Angel angel = null;
@@ -19,32 +17,17 @@ public final class Magician implements Observer {
         }
         return magician;
     }
-
-    public Player getFirstPlayer() {
-        return firstPlayer;
-    }
-
-    public void setWhatPlayersDo(PlayerObservable whatPlayersDo) {
+    public void setWhatPlayersDo(final PlayerObservable whatPlayersDo) {
         this.whatPlayersDo = whatPlayersDo;
     }
-
-    public void setFirstPlayer(Player firstPlayer) {
+    public void setFirstPlayer(final Player firstPlayer) {
         this.firstPlayer = firstPlayer;
     }
-
-    public Player getSecondPlayer() {
-        return secondPlayer;
-    }
-
-    public void setSecondPlayer(Player secondPlayer) {
+    public void setSecondPlayer(final Player secondPlayer) {
         this.secondPlayer = secondPlayer;
     }
 
-    public Player getWinner() {
-        return winner;
-    }
-
-    public void setWinner(Player winner) {
+    public void setWinner(final Player winner) {
         this.winner = winner;
     }
 
