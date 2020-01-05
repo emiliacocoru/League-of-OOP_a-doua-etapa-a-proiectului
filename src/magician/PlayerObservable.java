@@ -16,7 +16,7 @@ public class PlayerObservable implements Observable {
     }
 
     @Override
-    public final void notifyObserver() {
+    public final void notifyObserverForAngels() {
     }
 
     @Override

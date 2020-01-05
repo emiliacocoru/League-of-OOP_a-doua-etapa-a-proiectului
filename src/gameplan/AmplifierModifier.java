@@ -1,8 +1,9 @@
-package strategy;
+package gameplan;
 
 import players.Player;
 
 public final class AmplifierModifier {
+    // it increases or decreases the damage by a certain percentage for each player
     public void  knightAmplifierModification(final Player player, final float percent) {
         player.setExecuteAmplifierKP(player.getExecuteAmplifierKP() + percent);
         player.setExecuteAmplifierKR(player.getExecuteAmplifierKR() + percent);

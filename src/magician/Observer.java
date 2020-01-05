@@ -1,7 +1,7 @@
 package magician;
 
 public interface Observer  {
-    void update();
+    void updateAngel();
     void updatePlayerDead();
     void updateLevelUp();
 }

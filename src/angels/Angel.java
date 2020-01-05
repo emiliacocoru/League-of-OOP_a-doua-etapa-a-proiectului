@@ -9,6 +9,7 @@ import magician.Observer;
 
 public abstract class Angel implements Observable {
     private ArrayList<Observer> magician = new ArrayList<>();
+    // type of angel
     private String type;
     private int linePosition;
     private int columnPosition;
@@ -58,9 +59,9 @@ public abstract class Angel implements Observable {
     }
 
     @Override
-    public final void notifyObserver() {
+    public final void notifyObserverForAngels() {
         for (Observer magic : magician) {
-            magic.update();
+            magic.updateAngel();
         }
     }
     @Override

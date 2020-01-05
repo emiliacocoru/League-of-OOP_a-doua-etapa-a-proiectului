@@ -6,13 +6,13 @@ import players.type.Knight;
 import players.type.Pyromancer;
 import players.type.Rogue;
 import players.type.Wizard;
-import strategy.AmplifierModifier;
+import gameplan.AmplifierModifier;
 
 public final class DamageAngel extends Angel implements AngelVisitor {
     private AmplifierModifier modifier = new AmplifierModifier();
     @Override
     public void visit(final Knight player) {
-        // 15%
+        // boosts damage by 15%
         if (player.getDead() == 0) {
             final float amplifierDamageAngelKnight = (float) 0.15;
             modifier.knightAmplifierModification(player, amplifierDamageAngelKnight);
@@ -21,7 +21,7 @@ public final class DamageAngel extends Angel implements AngelVisitor {
 
     @Override
     public void visit(final Pyromancer player) {
-        // 20%
+        // boosts damage by 20%
         if (player.getDead() == 0) {
             final float amplifierDamageAngelPyromancer = (float) 0.2;
             modifier.pyromancerAmplifierModification(player, amplifierDamageAngelPyromancer);
@@ -30,7 +30,7 @@ public final class DamageAngel extends Angel implements AngelVisitor {
 
     @Override
     public void visit(final Rogue player) {
-        // 30%
+        // boosts damage by 30%
         if (player.getDead() == 0) {
             final float amplifierDamageAngelRogue = (float) 0.3;
             modifier.rogueAmplifierModification(player, amplifierDamageAngelRogue);
@@ -39,7 +39,7 @@ public final class DamageAngel extends Angel implements AngelVisitor {
 
     @Override
     public void visit(final Wizard player) {
-        // 40%
+        // boosts damage by 40%
         if (player.getDead() == 0) {
             final float amplifierDamageAngelWizard = (float) 0.40;
             modifier.wizardAmplifierModification(player, amplifierDamageAngelWizard);

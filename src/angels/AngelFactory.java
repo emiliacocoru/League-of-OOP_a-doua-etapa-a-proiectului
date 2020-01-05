@@ -14,6 +14,7 @@ import angels.type.XPAngel;
 import java.io.IOException;
 
 public final class AngelFactory {
+    // creates angels base on their type
     public Angel createAngel(final String angelType) throws IOException {
         if (angelType.equals("DamageAngel")) {
            return new DamageAngel();

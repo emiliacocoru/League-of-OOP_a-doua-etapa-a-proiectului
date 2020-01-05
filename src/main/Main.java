@@ -19,9 +19,11 @@ public final class Main {
 
     public static void main(final String[] args) throws IOException {
         String input = args[0];
+        // redirects my data from the console to the file
         PrintStream file = new PrintStream(new File(args[1]));
         System.setOut(file);
-         //start reading data from file
+
+        //start reading data from file
         StartGame startGame = new StartGame();
         startGame.readInput(input);
 
@@ -67,6 +69,10 @@ public final class Main {
             for (Player x : players) {
                 x.setWasFighting(0);
             }
+
+            // if an angel appears in the current round
+            // and if it is in the same place with a player,
+            // he will apply his skills to the player
             int angelThisRound = numberAngelPerRound.get(i);
             Magician magician = Magician.getMagician();
             while (angelThisRound > 0) {
@@ -76,28 +82,15 @@ public final class Main {
                     if (play.getLineMap() == angels.get(0).getLinePosition()) {
                         if (play.getColumnMap() == angels.get(0).getColumnPosition()) {
                             angels.get(0).setActualPlayer(play);
-                            angels.get(0).notifyObserver();
+                            angels.get(0).notifyObserverForAngels();
                             play.accept((AngelVisitor) angels.get(0));
                         }
                     }
                 }
+                // angels that appeared in the previous rounds disappear
                 angelThisRound--;
                 angels.remove(0);
             }
-        /*    for (Player x : players) {
-                    System.out.print(x.getType() + " ");
-                    System.out.print(x.getLevel());
-                    System.out.print(" ");
-                    System.out.print(x.getXp());
-                    System.out.print(" ");
-                    System.out.print(x.getHp());
-                    System.out.print(" ");
-                    System.out.print(x.getLineMap());
-                    System.out.print(" ");
-                    System.out.print(x.getColumnMap());
-
-                System.out.println("");
-            }*/
             System.out.println("");
         }
         System.out.println("~~ Results ~~");

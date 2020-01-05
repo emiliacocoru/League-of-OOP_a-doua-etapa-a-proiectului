@@ -41,7 +41,7 @@ public final class Magician implements Observer {
                 + angel.getLinePosition() + " " + angel.getColumnPosition());
     }
     @Override
-    public void update() {
+    public void updateAngel() {
         angel.update();
     }
     public void updatePlayerDead() {

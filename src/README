@@ -1,0 +1,83 @@
+Cocoru Emilia Iuliana 322CA
+
+Pentru a realiza cea de-a doua etapă, am continuat-o pe prima și am adaugat :
+- singleton pentru hartă
+- pachetul angel ce conține :
+	-> clasa abstractă Angel
+	-> AngelFactory(ce creează îngerii în funcție de tipul lor)
+	-> AngelVisitor ce mă ajută să fac un visitor pattern pentru a stabili o legătură
+	între îngeri și jucători.Astfel fiecare înger (ce se află în pachetul type)
+	împlementează interfața AngelVisitor, iar fiecare jucător implementează metoda
+	"public void accept(AngelVisitor angel)"(clasa abstractă Player jucând rolul de Visitable).
+-pachetul magician :
+	-> interfețele Observable și Observer
+	-> clasa Magician(Singleton) ce implementează interfața Observer
+	-> clasa PlayerObservable(conține informații despre parcursul jucătorilor)
+	și implementează interfața Observable
+	De asemenea, și Angel implementează Observable, întrucât îngerii și, în unele situați,
+	jucătorii joacă rolul de Subiect pentru care magicianul(Observatorul)
+	vrea să cunoască date legate de evoluția lor.
+-pachetul stategy ce conține :
+	->clase Context, interfața StrategytoPlay și cele 8 clase ce o implementează ce au rolul de a grea
+	"Strategy pattern", întrucât pentru fiecare jucator în parte există două strategii ce pot fi
+	utilizate și este folositor să alegem dinamic când să aplicăm una dintre ele,
+	fără a face programul să depindă complet de aceste alegeri.
+-am adăugat și in pachetul gameplan clasa ChooseStrategy, prin care jucătorul
+își alege strategia, înainte de a intra în luptă și clasa AmplifierModifier
+(ce conține metode ce au rolul de a modifica damage-ul cu un anumit procent
+(atât pentru jucători, cât și pentru îngeri));
+-am șters pachetul constants și am adăugat constantele ca variabile
+finale pentru fiecare clasă în parte.
+
+
+Proiectul a ajuns să fie structurat astfel:
+
+-angels |-->type-->class DamageAngel extends Angel implements AngelVisitor
+|		|	   |-->DarkAngel extends Angel implements AngelVisitor
+|		|	   |-->Dracula extends Angel implements AngelVisitor
+|		|	   |-->GoodBoy extends Angel implements AngelVisitor
+|		|	   |-->LevelUpAngel extends Angel implements AngelVisitor
+|		|	   |-->LifeGiver extends Angel implements AngelVisitor
+|		|	   |-->SmallAngel extends Angel implements AngelVisitor
+|		|	   |-->Spawner extends Angel implements AngelVisitor
+|		|	   |-->TheDoomer extends Angel implements AngelVisitor
+|		|	   |-->XPAngel extends Angel implements AngelVisitor
+|	   	|-->abstract class Angel implements Observable
+|	   	|-->final class AngelFactory
+|	   	|-->interface AngelVisitor
+|
+-gameplan-->class AmplifierModifier
+|		|-->class ChooseStrategy
+|		|-->class Fight
+|		|-->class GetXPandMaybeLevelUP
+|		|-->class LookingforPlayersInTheSameSpot
+|		|-->class Move
+|		|-->class TypeOFLand
+|
+-magician-->class Magician implements Observer
+|		|-->interface Observable
+|		|-->interface Observer
+|		|-->class PlayerObservable implements Observable
+|
+-main-->class Main
+|
+-players-->type-->class Knight cu clase interne Execute si Slam
+|				-->class Pyromancer cu clase interne FireBlast si Ignite
+|				-->class Roque cu clase interne BackStab si Paralysis
+|				-->classWizard cu clase interne Deflect si Drain
+|		-->visitor--> interface PlayerVisitor 
+|		-->class abstract Player(contine toate datele necesare unui jucator)
+|		-->class PlayerFactory(imi creeaza tipul de jucator in functie de caracterul sau)
+|
+-strategy-->class Context
+|		|-->class KnightFirstStrategy implements  StrategyToPlay
+|		|-->class KnightSecondStrategy implements  StrategyToPlay
+|		|-->class PyromancerFirstStrategy implements  StrategyToPlay
+|		|-->class PyromancerSecondStrategy implements  StrategyToPlay
+|		|-->class RogueFirstStrategy implements  StrategyToPlay
+|		|-->class RogueSecondStrategy implements  StrategyToPlay
+|		|-->class interface StrategyToPlay
+|		|-->class WizardFirstStrategy implements  StrategyToPlay
+|		|-->class WizardSecondStrategy implements  StrategyToPlay
+|
+-readinput-->class StartGame(imi preia datele din fisierul "something.in");

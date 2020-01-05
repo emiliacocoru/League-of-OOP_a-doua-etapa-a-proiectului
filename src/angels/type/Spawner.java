@@ -8,6 +8,7 @@ import players.type.Rogue;
 import players.type.Wizard;
 
 public final class Spawner extends Angel implements AngelVisitor {
+    // spawner brings a player to life and sets his hp to a certain value
     @Override
     public void visit(final Knight player) {
         if (player.getDead() == 1) {

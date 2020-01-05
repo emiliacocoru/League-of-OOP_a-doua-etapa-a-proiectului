@@ -8,7 +8,7 @@ import players.type.Rogue;
 import players.type.Wizard;
 
 public final class TheDoomer extends Angel implements AngelVisitor {
-
+    // the doomer kills a player
     @Override
     public void visit(final Knight player) {
         if (player.getDead() == 0) {

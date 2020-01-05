@@ -7,17 +7,17 @@ import players.type.Knight;
 import players.type.Pyromancer;
 import players.type.Rogue;
 import players.type.Wizard;
-import strategy.AmplifierModifier;
+import gameplan.AmplifierModifier;
 
 public final class LevelUpAngel extends Angel implements AngelVisitor {
     private GetXPandMaybeLevelUP level = new GetXPandMaybeLevelUP();
     private AmplifierModifier modifier = new AmplifierModifier();
     private final int levelUpValue = 250;
     private final int levelUpPerLevelValue = 50;
+    // offers xp so the player can level up
     @Override
     public void visit(final Knight player) {
-        final int xpValue = 200;
-        final int xpPerLevelValue = 40;
+        // increases damage by 10%
         if (player.getDead() == 0) {
 
             player.setXp(levelUpValue
@@ -32,6 +32,7 @@ public final class LevelUpAngel extends Angel implements AngelVisitor {
     @Override
     public void visit(final Pyromancer player) {
         if (player.getDead() == 0) {
+            // increases damage by 20%
             player.setXp(levelUpValue
                     + player.getLevel() * levelUpPerLevelValue);
             level.xpLevelUp(player);
@@ -44,6 +45,7 @@ public final class LevelUpAngel extends Angel implements AngelVisitor {
     @Override
     public void visit(final Rogue player) {
         if (player.getDead() == 0) {
+            // increases damage by 15%
             player.setXp(levelUpValue
                     + player.getLevel() * levelUpPerLevelValue);
             level.xpLevelUp(player);
@@ -56,6 +58,7 @@ public final class LevelUpAngel extends Angel implements AngelVisitor {
     @Override
     public void visit(final Wizard player) {
         if (player.getDead() == 0) {
+            // increases damage by 25%
             player.setXp(levelUpValue
                     + player.getLevel() * levelUpPerLevelValue);
             level.xpLevelUp(player);

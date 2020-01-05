@@ -11,6 +11,7 @@ public final class DarkAngel extends Angel implements AngelVisitor {
     @Override
     public void visit(final Knight player) {
         if (player.getDead() == 0) {
+            // lowers the hp by 40
             final int damageDarkAngelKnight = 40;
             player.setHp(player.getHp() - damageDarkAngelKnight);
             if (player.getHp() < 0) {
@@ -22,6 +23,7 @@ public final class DarkAngel extends Angel implements AngelVisitor {
     @Override
     public void visit(final Pyromancer player) {
         if (player.getDead() == 0) {
+            // lowers the hp by 30
             final int damageDarkAngelPyromancer = 30;
             player.setHp(player.getHp() - damageDarkAngelPyromancer);
             if (player.getHp() < 0) {
@@ -33,6 +35,7 @@ public final class DarkAngel extends Angel implements AngelVisitor {
     @Override
     public void visit(final Rogue player) {
         if (player.getDead() == 0) {
+            // lowers the hp by 10
             final int damageDarkAngelRogue = 10;
             player.setHp(player.getHp() - damageDarkAngelRogue);
             if (player.getHp() < 0) {
@@ -44,6 +47,7 @@ public final class DarkAngel extends Angel implements AngelVisitor {
     @Override
     public void visit(final Wizard player) {
         if (player.getDead() == 0) {
+            // lowers the hp by 20
             final int damageDarkAngelWizard = 20;
             player.setHp(player.getHp() - damageDarkAngelWizard);
             if (player.getHp() < 0) {

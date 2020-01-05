@@ -1,5 +1,6 @@
 package strategy;
 
+import gameplan.AmplifierModifier;
 import players.Player;
 
 public final class WizardSecondStrategy implements StrategyToPlay {

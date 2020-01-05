@@ -14,6 +14,7 @@ public final class XPAngel extends Angel implements AngelVisitor {
     @Override
     public void visit(final Knight player) {
         if (player.getDead() == 0) {
+            // increase the xp by 45
             final int giveXpKnight = 45;
             player.setXp(player.getXp() + giveXpKnight);
             level.xpLevelUp(player);
@@ -24,6 +25,7 @@ public final class XPAngel extends Angel implements AngelVisitor {
     @Override
     public void visit(final Pyromancer player) {
         if (player.getDead() == 0) {
+            // increase the xp by 50
             final int giveXpPyromancer = 50;
             player.setXp(player.getXp() + giveXpPyromancer);
             level.xpLevelUp(player);
@@ -34,6 +36,7 @@ public final class XPAngel extends Angel implements AngelVisitor {
     @Override
     public void visit(final Rogue player) {
         if (player.getDead() == 0) {
+            // increase the xp by 40
             final int giveXpRogue = 40;
             player.setXp(player.getXp() + giveXpRogue);
             level.xpLevelUp(player);
@@ -44,6 +47,7 @@ public final class XPAngel extends Angel implements AngelVisitor {
     @Override
     public void visit(final Wizard player) {
         if (player.getDead() == 0) {
+            // increase the xp by 60
             final int giveXpWizard = 60;
             player.setXp(player.getXp() + giveXpWizard);
             level.xpLevelUp(player);
