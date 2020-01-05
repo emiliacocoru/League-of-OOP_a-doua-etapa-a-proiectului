@@ -63,4 +63,10 @@ public abstract class Angel implements Observable {
             magic.update();
         }
     }
+    @Override
+    public void notifyObserverForDead() {
+    }
+    @Override
+    public void notifyObserverForLevelUp() {
+    }
 }

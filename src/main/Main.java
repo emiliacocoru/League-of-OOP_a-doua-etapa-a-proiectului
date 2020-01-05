@@ -41,9 +41,12 @@ public final class Main {
             for (int j = 0; j < participants; j++) {
                 if (players.get(j).getIncapacityOfMovement() == 0) {
                     moves.makeMove(players.get(j), movesRounds.get(i).charAt(j));
+                    players.get(j).setIncapacityOfMovementThisRound(0);
                 } else {
                     players.get(j).setIncapacityOfMovement(players.get(j).getIncapacityOfMovement()
                             - 1);
+                    players.get(j).setIncapacityOfMovementThisRound(1);
+
                 }
             }
             // each player receives the damage from the last round
@@ -65,8 +68,7 @@ public final class Main {
                 x.setWasFighting(0);
             }
             int angelThisRound = numberAngelPerRound.get(i);
-            Magician magician = new Magician();
-            int count = 0;
+            Magician magician = Magician.getMagician();
             while (angelThisRound > 0) {
                 magician.setAngel(angels.get(0));
                 angels.get(0).addObserver(magician);
@@ -74,7 +76,6 @@ public final class Main {
                     if (play.getLineMap() == angels.get(0).getLinePosition()) {
                         if (play.getColumnMap() == angels.get(0).getColumnPosition()) {
                             angels.get(0).setActualPlayer(play);
-                            //magician.update();
                             angels.get(0).notifyObserver();
                             play.accept((AngelVisitor) angels.get(0));
                         }
@@ -83,6 +84,20 @@ public final class Main {
                 angelThisRound--;
                 angels.remove(0);
             }
+        /*    for (Player x : players) {
+                    System.out.print(x.getType() + " ");
+                    System.out.print(x.getLevel());
+                    System.out.print(" ");
+                    System.out.print(x.getXp());
+                    System.out.print(" ");
+                    System.out.print(x.getHp());
+                    System.out.print(" ");
+                    System.out.print(x.getLineMap());
+                    System.out.print(" ");
+                    System.out.print(x.getColumnMap());
+
+                System.out.println("");
+            }*/
             System.out.println("");
         }
         System.out.println("~~ Results ~~");

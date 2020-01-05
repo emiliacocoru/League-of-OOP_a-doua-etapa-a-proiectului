@@ -12,7 +12,7 @@ public final class KnightFirstStrategy implements  StrategyToPlay {
         if (player.getMaxHP() / knightFirstVariable < player.getHp()) {
             if (player.getHp() <  player.getMaxHP() / knightSecondVariable) {
                 AmplifierModifier modifier = new AmplifierModifier();
-                modifier.knightAmplifierModification(player, (float) knightAmplifier);
+                modifier.knightAmplifierModification(player, knightAmplifier);
                 player.setHp(player.getHp() - player.getHp() / knightHpVariable);
             }
         }

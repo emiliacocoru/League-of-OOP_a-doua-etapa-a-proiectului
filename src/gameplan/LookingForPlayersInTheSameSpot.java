@@ -1,5 +1,7 @@
 package gameplan;
 
+import magician.Magician;
+import magician.PlayerObservable;
 import players.Player;
 
 import java.util.ArrayList;
@@ -9,6 +11,7 @@ public final class LookingForPlayersInTheSameSpot {
         Fight battle = new Fight();
         Player firstPlayer = null;
         Player secondPlayer = null;
+        ChooseStrategy strategy = new ChooseStrategy();
         GetXPandMaybeLevelUP level = new GetXPandMaybeLevelUP();
         /* finds two players in the same place on the map,
           if the players are alive and they didn't fight
@@ -24,6 +27,9 @@ public final class LookingForPlayersInTheSameSpot {
                             if (firstPlayer.getColumnMap() == secondPlayer.getColumnMap()) {
                                 secondPlayer.setWasFighting(1);
                                 firstPlayer.setWasFighting(1);
+
+                                strategy.playerChooseStrategy(firstPlayer);
+                                strategy.playerChooseStrategy(secondPlayer);
                                 /* if the first player is a wizard,
                                  the second player "will attack" first */
                                 if (firstPlayer.getType() == 'W') {
@@ -45,31 +51,21 @@ public final class LookingForPlayersInTheSameSpot {
                                 }
                                 /* if one manages to kill the other,
                                  he receives xp and is able to level up*/
+                                PlayerObservable whatPlayersDo = new PlayerObservable();
+                                Magician magician = Magician.getMagician();
+                                magician.setWhatPlayersDo(whatPlayersDo);
+                                whatPlayersDo.addObserver(magician);
+                                magician.setFirstPlayer(firstPlayer);
+                                magician.setSecondPlayer(secondPlayer);
+                                whatPlayersDo.notifyObserverForDead();
+
                                 if (firstPlayer.getDead() == 0 && secondPlayer.getDead() == 1) {
-                                    System.out.println("Player " + secondPlayer.getFullType() + " "
-                                            + secondPlayer.getId() + " was killed by "
-                                            + firstPlayer.getFullType()
-                                            + " " + firstPlayer.getId());
                                     level.getXP(firstPlayer, secondPlayer);
                                     level.xpLevelUp(firstPlayer);
                                 }
                                 if (secondPlayer.getDead() == 0 && firstPlayer.getDead() == 1) {
-                                    System.out.println("Player " + firstPlayer.getFullType() + " "
-                                            + firstPlayer.getId() + " was killed by "
-                                            + secondPlayer.getFullType() + " "
-                                            + secondPlayer.getId());
                                     level.getXP(secondPlayer, firstPlayer);
                                     level.xpLevelUp(secondPlayer);
-                                }
-                                if (firstPlayer.getDead() == 1 && secondPlayer.getDead() == 1) {
-                                    System.out.println("Player " + secondPlayer.getFullType() + " "
-                                            + secondPlayer.getId() + " was killed by "
-                                            + firstPlayer.getFullType() + " "
-                                            + firstPlayer.getId());
-                                    System.out.println("Player " + firstPlayer.getFullType() + " "
-                                            + firstPlayer.getId() + " was killed by "
-                                            + secondPlayer.getFullType() + " "
-                                            + secondPlayer.getId());
                                 }
                             }
                         }

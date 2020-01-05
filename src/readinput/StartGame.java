@@ -52,14 +52,16 @@ public final class StartGame {
         int numberLines = fileReader.nextInt();
         int numberColumns = fileReader.nextInt();
         // numberLines + numberColumns = the dimensions of the map
-        Map gameMap = new Map(numberLines, numberColumns);
+        char[][] game = null;
+        game = new char[numberLines][numberColumns];
          for (int i = 0; i < numberLines; i++) {
             String typeGround = fileReader.nextWord();
             for (int j = 0; j < numberColumns; j++) {
-                gameMap.updateMap(i, j, typeGround.charAt(j));
+                game[i][j] = typeGround.charAt(j);
             }
          }
-
+         Map gameMap = Map.getInstance();
+         gameMap.setMap(game);
          participants = fileReader.nextInt(); // number of players
          Player player = null;
          Angel angel = null;

@@ -15,9 +15,8 @@ public final class Pyromancer extends Player {
         setFullType("Pyromancer");
     }
 
-    private Map land = new Map();
+    private Map land = Map.getInstance();
     private char[][] gameMap = land.getMap();
-
     // check if it is a land amplifier or not
     public void landAmplifier() {
         if (gameMap[getLineMap()][getColumnMap()] == 'V') {
@@ -97,7 +96,7 @@ public final class Pyromancer extends Player {
             player.setExtraRounds(2);
             player.setDamageExtra(damageExtraPyromancer
                     + damageExtraPyromancerPerLevel * player.getLevel());
-            player.setDamageExtra((int) Math.round(player.getDamageExtra() * landAmplifier));
+            player.setDamageExtra((int) Math.round(player.getDamageExtra()));
         }
         @Override
         public void visit(final Knight player) {

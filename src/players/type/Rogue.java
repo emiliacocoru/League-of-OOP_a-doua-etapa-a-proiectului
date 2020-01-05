@@ -13,7 +13,7 @@ public final class Rogue extends Player {
     private int landExtraRounds = numberOfRoundsWithoutAmplifier;
     private int numberOfHits = 0;
 
-    private Map land = new Map();
+    private Map land = Map.getInstance();
     private char[][] gameMap = land.getMap();
     public Rogue(final char type) {
         super(type);

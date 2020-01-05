@@ -1,6 +1,7 @@
 package players;
 
 import angels.AngelVisitor;
+import magician.PlayerObservable;
 import players.visitor.PlayerVisitor;
 
 public abstract class Player {
@@ -24,6 +25,16 @@ public abstract class Player {
     private float receivedDamageWRA = 0;
     // receivedDamage = the damage a player receive without race amplifier
     private int incapacityOfMovement = 0;
+
+    public final int getIncapacityOfMovementThisRound() {
+        return incapacityOfMovementThisRound;
+    }
+
+    public final void setIncapacityOfMovementThisRound(final int incapacityOfMovementThisRound) {
+        this.incapacityOfMovementThisRound = incapacityOfMovementThisRound;
+    }
+
+    private int incapacityOfMovementThisRound = 0;
     private int wasFighting = 0;
     private int dead = 0;
     // dead = 0 --> the player is still in the game
@@ -497,4 +508,5 @@ public abstract class Player {
     public final void setDead(final int dead) {
         this.dead = dead;
     }
+
 }

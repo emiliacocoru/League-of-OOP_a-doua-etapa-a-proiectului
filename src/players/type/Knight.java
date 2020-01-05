@@ -29,7 +29,8 @@ public final  class Knight extends Player {
         angel.visit(this);
     }
 
-    private Map land = new Map();
+    //private Map land = new Map();
+    private Map land = Map.getInstance();
     private char[][] gameMap = land.getMap();
     // check if it is a land amplifier or not
     private void landAmplifier() {
@@ -40,7 +41,6 @@ public final  class Knight extends Player {
     }
     // first power
     public final class Execute implements PlayerVisitor {
-        private final int levelUpHPKnight = 80;
         private final int executeDamage = 200;
         private final int executeDamagePerLevel = 30;
         private int damageExecuteInitial = executeDamage
@@ -50,9 +50,9 @@ public final  class Knight extends Player {
         /* calculates the minimum hp required for a player
            in order not to be killed instantly */
         void findHPLimit(final Player player) {
-            final float executePercentPerLevel = (float) 0.01;
-            final float executePercent = (float) 0.2;
-            final float executeMaxPercent = (float) 0.4;
+            final double executePercentPerLevel = (float) 0.01;
+            final double executePercent = (float) 0.2;
+            final double executeMaxPercent = (float) 0.4;
             if (executePercentPerLevel
                     * player.getLevel() > executePercent) {
                 hpLimit = (int) Math.round(executeMaxPercent * (player.getMaxHP()));
@@ -101,7 +101,6 @@ public final  class Knight extends Player {
             } else {
                 execute = (int) Math.round(damageExecuteInitial * landAmplifier
                         * getExecuteAmplifierKR());
-
                 player.setReceivedDamageWRA((int) Math.round(damageExecuteInitial * landAmplifier));
             }
             player.setDamageThisRound(execute);

@@ -6,7 +6,7 @@ import players.Player;
 import players.visitor.PlayerVisitor;
 
 public final class Wizard extends Player {
-    private Map land = new Map();
+    private Map land = Map.getInstance();
     private char[][] gameMap = land.getMap();
     private double landAmplifier = 1.0;
     public Wizard(final char type) {
